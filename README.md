@@ -100,6 +100,20 @@ dotnet run -c Release --project benchmarks/DuckFrame.Benchmarks -- --filter '*Ma
 
 基准实际返回 10 万行 × 8 列，将建库、注册放在物化基准的 setup 中，分别测量原生类型化 reader、默认行缓存和不缓存的直接映射。注册单独测量。以当前机器上的 BenchmarkDotNet 结果比较耗时及分配，不沿用旧实现的 Stopwatch 数字。此次同进程短基准中，直接映射约 126.6 ms（原生 112.6 ms，约 1.13 倍），托管分配 17.3 MB；详见 [测量环境与报告](docs/benchmarks-2026-11-01.md)。
 
+百万行 LINQ / DuckFrame / 原生 DuckDB 分析对比使用独立进程计时器，分别记录载入、首次查询和预热后的查询。覆盖过滤汇总、月度分组、百万行连接、两次连接后汇总及 Top 20；每次结果均做独立校验。
+
+```bash
+dotnet run -c Release --project benchmarks/DuckFrame.Benchmarks -- \
+  --analytics --rows 1000000 --repeats 3 --samples 9 --warmups 5 --warmup-ms 1000 \
+  --output artifacts/analytics-1m
+python3 benchmarks/DuckFrame.Benchmarks/Analytics/report.py \
+  artifacts/analytics-1m docs/analytics-1m.md
+```
+
+完整结果见 [百万行复杂分析对比报告](docs/analytics-1m-2026-11-01.md)，包含首次查询、预热后查询、单线程/默认线程及逐次原始数据。
+
+使用 `--rows 10000 --repeats 1 --samples 1 --warmups 1 --warmup-ms 0` 可快速预检查询正确性。报告生成器只依赖 Python 标准库；可选的 `--plot` 绘图功能需要 matplotlib。
+
 ## 已知限制
 
 1. 嵌套对象 / 字典仍存为 JSON，原生 STRUCT / MAP 写入属于后续工作。

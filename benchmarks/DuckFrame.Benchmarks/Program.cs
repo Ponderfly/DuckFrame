@@ -1,8 +1,13 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using DuckFrame;
+using DuckFrame.Benchmarks.Analytics;
+
+if (args.Contains("--analytics-worker")) return AnalyticsSuite.Worker(args);
+if (args.Contains("--analytics")) return await AnalyticsSuite.Run(args);
 
 BenchmarkSwitcher.FromAssembly(typeof(RegistrationBenchmarks).Assembly).Run(args);
+return 0;
 
 [MemoryDiagnoser]
 public class RegistrationBenchmarks

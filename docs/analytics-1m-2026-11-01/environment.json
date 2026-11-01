@@ -1,0 +1,18 @@
+{
+  "StartedUtc": "2026-11-01T08:15:10.131679+00:00",
+  "Framework": ".NET 10.0.14",
+  "OS": "Ubuntu 26.04.1 LTS",
+  "Architecture": "X64",
+  "ProcessorCount": 32,
+  "ServerGc": false,
+  "Frequency": 1000000000,
+  "Settings": {
+    "Rows": 1000000,
+    "Repeats": 3,
+    "Samples": 9,
+    "Warmups": 5,
+    "WarmupMs": 1000,
+    "Output": "artifacts/analytics-1m-final-2026-11-01"
+  },
+  "Seed": 20261101
+}

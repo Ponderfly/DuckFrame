@@ -1,0 +1,8732 @@
+[
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 672.6053,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 116.027,
+      "AllocatedBytes": 416,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 59.6492,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 59.3171,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 59.1103,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 56.8245,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 59.0346,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 61.0229,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 58.9649,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 59.2145,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 58.9695,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 15,
+    "WarmupMs": 1005.4861,
+    "WarmupQueryMs": 1004.9944999999998,
+    "PeakWorkingSetBytes": 128626688,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 672.9514,
+    "Initialize": {
+      "Milliseconds": 2134.6695,
+      "AllocatedBytes": 328398144,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 249.0375,
+      "AllocatedBytes": 206648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 22.2356,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.2361,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.73,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.7257,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.4561,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 23.1859,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 25.4138,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.1121,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.9658,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 48,
+    "WarmupMs": 1014.585,
+    "WarmupQueryMs": 1014.0107999999998,
+    "PeakWorkingSetBytes": 259235840,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 702.0174,
+    "Initialize": {
+      "Milliseconds": 1279.923,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 40.3483,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 22.6336,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.8617,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 20.7795,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.4458,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.053,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 19.3421,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 18.8676,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 18.8851,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 18.9381,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 48,
+    "WarmupMs": 1011.961,
+    "WarmupQueryMs": 1011.3512999999998,
+    "PeakWorkingSetBytes": 248975360,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 639.3337,
+    "Initialize": {
+      "Milliseconds": 2176.0272,
+      "AllocatedBytes": 328397768,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 262.1479,
+      "AllocatedBytes": 206648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 6.2967,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.6247,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.8321,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.4307,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 8.2426,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 8.4199,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.0706,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.2283,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.4103,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 136,
+    "WarmupMs": 1002.2623,
+    "WarmupQueryMs": 1001.0182999999998,
+    "PeakWorkingSetBytes": 282685440,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 713.7634,
+    "Initialize": {
+      "Milliseconds": 1412.0224,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 29.0121,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 7.0435,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 8.1692,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.7091,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.7957,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.9034,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.4257,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.3524,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.0688,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.7248,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 147,
+    "WarmupMs": 1006.873,
+    "WarmupQueryMs": 1005.4623999999995,
+    "PeakWorkingSetBytes": 271241216,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 753.9244,
+    "Initialize": {
+      "Milliseconds": 2252.3338,
+      "AllocatedBytes": 328398144,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 314.101,
+      "AllocatedBytes": 211560,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 80.9088,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 82.5985,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.1668,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 99.7553,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.7796,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.6633,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.1253,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.8679,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.2433,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1061.9765,
+    "WarmupQueryMs": 1061.4665,
+    "PeakWorkingSetBytes": 263598080,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 713.588,
+    "Initialize": {
+      "Milliseconds": 1485.1095,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 121.6836,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 93.8444,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.0035,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 91.5317,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 91.2359,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.7471,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 84.7551,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.5419,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.5442,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.0671,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1080.9938,
+    "WarmupQueryMs": 1080.3304,
+    "PeakWorkingSetBytes": 250650624,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 762.8914,
+    "Initialize": {
+      "Milliseconds": 2336.047,
+      "AllocatedBytes": 328397864,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 285.7418,
+      "AllocatedBytes": 211560,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 37.8885,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.2304,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.2472,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.9141,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 43.5365,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 40.216,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.6693,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.4894,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 29.5169,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 29,
+    "WarmupMs": 1011.4645,
+    "WarmupQueryMs": 1010.3799,
+    "PeakWorkingSetBytes": 339484672,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 680.9258,
+    "Initialize": {
+      "Milliseconds": 1308.0258,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 62.9067,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 32.1449,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 29.9583,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 33.7311,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.4042,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.1553,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.9579,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.8853,
+        "AllocatedBytes": 7864,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.1908,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 29.9126,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 30,
+    "WarmupMs": 1013.3698,
+    "WarmupQueryMs": 1012.1901,
+    "PeakWorkingSetBytes": 325861376,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 656.4037,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 443.8833,
+      "AllocatedBytes": 22844336,
+      "Gen0": 1,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 241.855,
+        "AllocatedBytes": 22839592,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 230.0863,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 225.0273,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 218.0562,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 236.9232,
+        "AllocatedBytes": 22834392,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 219.2251,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 247.0537,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 250.7289,
+        "AllocatedBytes": 22839976,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 230.1786,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 1318.2129,
+    "WarmupQueryMs": 1317.6615000000002,
+    "PeakWorkingSetBytes": 206336000,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 747.0385,
+    "Initialize": {
+      "Milliseconds": 1518.7039,
+      "AllocatedBytes": 70722360,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1035.6579,
+      "AllocatedBytes": 104800296,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 758.2504,
+        "AllocatedBytes": 104799216,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 671.3885,
+        "AllocatedBytes": 104799688,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 602.4097,
+        "AllocatedBytes": 104800056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 630.8809,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 680.433,
+        "AllocatedBytes": 104803984,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 750.9751,
+        "AllocatedBytes": 104799792,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 627.2658,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 638.7459,
+        "AllocatedBytes": 104799728,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 581.4632,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3752.2564,
+    "WarmupQueryMs": 3154.664,
+    "PeakWorkingSetBytes": 607154176,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 672.5909,
+    "Initialize": {
+      "Milliseconds": 2301.9616,
+      "AllocatedBytes": 344441808,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1497.9248,
+      "AllocatedBytes": 105018064,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 732.8107,
+        "AllocatedBytes": 104827088,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 763.0278,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 830.2271,
+        "AllocatedBytes": 104827304,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 746.3241,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 781.2092,
+        "AllocatedBytes": 104827280,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 826.3054,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 764.0827,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 818.5867,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 856.8986,
+        "AllocatedBytes": 104827264,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4423.5693,
+    "WarmupQueryMs": 3869.4392,
+    "PeakWorkingSetBytes": 666787840,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 673.4369,
+    "Initialize": {
+      "Milliseconds": 1384.9046,
+      "AllocatedBytes": 70719056,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 871.3537,
+      "AllocatedBytes": 104799728,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 600.3255,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 854.1803,
+        "AllocatedBytes": 104800048,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 584.0056,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 672.0854,
+        "AllocatedBytes": 104799720,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 703.4273,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 650.8801,
+        "AllocatedBytes": 104799840,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 834.2775,
+        "AllocatedBytes": 104799800,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 631.5331,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 621.3708,
+        "AllocatedBytes": 104799736,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3906.6898,
+    "WarmupQueryMs": 3285.9096,
+    "PeakWorkingSetBytes": 741597184,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 653.28,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1117.8998,
+      "AllocatedBytes": 83675672,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 757.5554,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 897.4937,
+        "AllocatedBytes": 83675488,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 908.875,
+        "AllocatedBytes": 83675560,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 756.8444,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 773.1211,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 816.2251,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 849.0703,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 955.0018,
+        "AllocatedBytes": 83675632,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 845.9465,
+        "AllocatedBytes": 83675656,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4762.0948,
+    "WarmupQueryMs": 4145.0190999999995,
+    "PeakWorkingSetBytes": 383053824,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 654.7191,
+    "Initialize": {
+      "Milliseconds": 2188.6093,
+      "AllocatedBytes": 344454040,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1452.9539,
+      "AllocatedBytes": 105000904,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 771.8425,
+        "AllocatedBytes": 104853952,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 636.931,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 769.8861,
+        "AllocatedBytes": 104827280,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 2
+      },
+      {
+        "Milliseconds": 616.8628,
+        "AllocatedBytes": 104826280,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 778.2003,
+        "AllocatedBytes": 104827312,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 780.5544,
+        "AllocatedBytes": 104827288,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 642.473,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 772.2542,
+        "AllocatedBytes": 104828520,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 2
+      },
+      {
+        "Milliseconds": 628.3918,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4151.9769,
+    "WarmupQueryMs": 3593.4352,
+    "PeakWorkingSetBytes": 599040000,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1081.3061,
+    "Initialize": {
+      "Milliseconds": 2681.6511,
+      "AllocatedBytes": 520530080,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1163.1193,
+      "AllocatedBytes": 81017160,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 488.9173,
+        "AllocatedBytes": 80823672,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 603.6607,
+        "AllocatedBytes": 80825264,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 562.1815,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 591.3918,
+        "AllocatedBytes": 80825000,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 499.4542,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 688.4708,
+        "AllocatedBytes": 80825248,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 556.0488,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 690.6158,
+        "AllocatedBytes": 80825048,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 525.7368,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2975.2088,
+    "WarmupQueryMs": 2800.4611,
+    "PeakWorkingSetBytes": 891531264,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1094.8313,
+    "Initialize": {
+      "Milliseconds": 1718.2168,
+      "AllocatedBytes": 128394152,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 576.2847,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 437.444,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 463.5763,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 557.6461,
+        "AllocatedBytes": 80798616,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 424.9015,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 417.7457,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 500.2912,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 533.1797,
+        "AllocatedBytes": 80804120,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 446.8067,
+        "AllocatedBytes": 80798808,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 492.1524,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2634.9298,
+    "WarmupQueryMs": 2365.5339999999997,
+    "PeakWorkingSetBytes": 839516160,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1115.2665,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1280.8916,
+      "AllocatedBytes": 185556104,
+      "Gen0": 25,
+      "Gen1": 12,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 1106.7704,
+        "AllocatedBytes": 185555792,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1234.9351,
+        "AllocatedBytes": 185555584,
+        "Gen0": 26,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 808.8683,
+        "AllocatedBytes": 185555384,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1014.6168,
+        "AllocatedBytes": 185555648,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1074.8913,
+        "AllocatedBytes": 185555624,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1140.343,
+        "AllocatedBytes": 185555592,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 842.2313,
+        "AllocatedBytes": 185555408,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1177.4725,
+        "AllocatedBytes": 185555600,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 887.6489,
+        "AllocatedBytes": 185555384,
+        "Gen0": 26,
+        "Gen1": 13,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 5346.0375,
+    "WarmupQueryMs": 5128.1845,
+    "PeakWorkingSetBytes": 747552768,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1214.2592,
+    "Initialize": {
+      "Milliseconds": 2651.6664,
+      "AllocatedBytes": 520517600,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1118.6806,
+      "AllocatedBytes": 81004872,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 550.492,
+        "AllocatedBytes": 80848296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 594.1918,
+        "AllocatedBytes": 80823992,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 532.5294,
+        "AllocatedBytes": 80823992,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 505.6437,
+        "AllocatedBytes": 80825032,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 547.1562,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 609.8437,
+        "AllocatedBytes": 80825224,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 534.0426,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 592.7985,
+        "AllocatedBytes": 80825024,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 528.6803,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3034.4045,
+    "WarmupQueryMs": 2803.2883,
+    "PeakWorkingSetBytes": 667570176,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1121.6463,
+    "Initialize": {
+      "Milliseconds": 1673.4251,
+      "AllocatedBytes": 128397456,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 591.4675,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 499.281,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 476.4843,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 559.0451,
+        "AllocatedBytes": 80798208,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 494.8562,
+        "AllocatedBytes": 80806080,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 631.8021,
+        "AllocatedBytes": 80798184,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 497.1869,
+        "AllocatedBytes": 80798680,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 497.1313,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 569.4142,
+        "AllocatedBytes": 80805888,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 420.8726,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2777.2377,
+    "WarmupQueryMs": 2507.7206,
+    "PeakWorkingSetBytes": 678887424,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 740.2638,
+    "Initialize": {
+      "Milliseconds": 1517.2889,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 79.9931,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 46.43,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 46.9317,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 43.2553,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.1693,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 62.8942,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 66.8546,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 61.9752,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 65.9117,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 56.4763,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 20,
+    "WarmupMs": 1008.0191,
+    "WarmupQueryMs": 1004.5947,
+    "PeakWorkingSetBytes": 408162304,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 741.0587,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1289.6555,
+      "AllocatedBytes": 24499976,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 691.359,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 776.4199,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 774.9778,
+        "AllocatedBytes": 24467392,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 758.3537,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 758.3314,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 790.1248,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 741.0744,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 791.5896,
+        "AllocatedBytes": 24469256,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 781.1087,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3705.7679,
+    "WarmupQueryMs": 3704.6845000000003,
+    "PeakWorkingSetBytes": 234188800,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 700.7387,
+    "Initialize": {
+      "Milliseconds": 2444.8061,
+      "AllocatedBytes": 344600408,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 350.6469,
+      "AllocatedBytes": 320480,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 81.0079,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.3178,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.3711,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 100.359,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.9909,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 102.621,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 105.2222,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 81.4667,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.2397,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1061.1941,
+    "WarmupQueryMs": 1058.9562,
+    "PeakWorkingSetBytes": 270782464,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 722.8569,
+    "Initialize": {
+      "Milliseconds": 1440.2967,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 130.1568,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 82.6095,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.8902,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.1912,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.1435,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.7081,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.1651,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 83.374,
+        "AllocatedBytes": 121208,
+        "Gen0": 1,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.8576,
+        "AllocatedBytes": 121656,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 81.6716,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1010.0721,
+    "WarmupQueryMs": 1007.6329000000001,
+    "PeakWorkingSetBytes": 262258688,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 724.2013,
+    "Initialize": {
+      "Milliseconds": 2343.2032,
+      "AllocatedBytes": 344613200,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 281.8997,
+      "AllocatedBytes": 308144,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 44.9325,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.5173,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.1499,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.2253,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.7476,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.7687,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.1076,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.4629,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 54.6776,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 19,
+    "WarmupMs": 1031.0341,
+    "WarmupQueryMs": 1026.221,
+    "PeakWorkingSetBytes": 420233216,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 738.4342,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1250.1987,
+      "AllocatedBytes": 24506760,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 673.1479,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 785.4028,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 790.1796,
+        "AllocatedBytes": 24476656,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 722.0192,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 721.0906,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 738.5771,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 741.5908,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 803.8896,
+        "AllocatedBytes": 24474176,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 743.2296,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3628.8624,
+    "WarmupQueryMs": 3628.4253999999996,
+    "PeakWorkingSetBytes": 236675072,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 679.8083,
+    "Initialize": {
+      "Milliseconds": 2240.6044,
+      "AllocatedBytes": 344600408,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 312.8143,
+      "AllocatedBytes": 204648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 85.2315,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 76.1499,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 83.2298,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.2937,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.0295,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.5547,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 92.069,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.1012,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 97.1596,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1031.7374,
+    "WarmupQueryMs": 1031.1476,
+    "PeakWorkingSetBytes": 276660224,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 733.5501,
+    "Initialize": {
+      "Milliseconds": 1557.5043,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 120.5609,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 83.6346,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 82.1438,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.0109,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.2438,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.5816,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 91.3958,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.9031,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 80.5573,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.4761,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1057.4335,
+    "WarmupQueryMs": 1056.7330000000002,
+    "PeakWorkingSetBytes": 264540160,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 665.6614,
+    "Initialize": {
+      "Milliseconds": 2234.5111,
+      "AllocatedBytes": 344600960,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 292.7114,
+      "AllocatedBytes": 204720,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 44.8811,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 41.442,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 41.2931,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 40.527,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 46.0327,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.9572,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.0873,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 44.4881,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.4244,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 21,
+    "WarmupMs": 1043.0148,
+    "WarmupQueryMs": 1042.3292000000001,
+    "PeakWorkingSetBytes": 436322304,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 0,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 716.0243,
+    "Initialize": {
+      "Milliseconds": 1576.9695,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 77.2423,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 42.4471,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.8379,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.8952,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.1863,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.316,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 40.5118,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 45.6767,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.5231,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.6702,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 20,
+    "WarmupMs": 1016.9161,
+    "WarmupQueryMs": 1015.6289999999999,
+    "PeakWorkingSetBytes": 428154880,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 679.3888,
+    "Initialize": {
+      "Milliseconds": 2301.7991,
+      "AllocatedBytes": 344454040,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1517.512,
+      "AllocatedBytes": 104999496,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 797.5734,
+        "AllocatedBytes": 104827296,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 691.5667,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 786.3179,
+        "AllocatedBytes": 104827328,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 814.8131,
+        "AllocatedBytes": 104827320,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 683.1576,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 878.3652,
+        "AllocatedBytes": 104827272,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 2
+      },
+      {
+        "Milliseconds": 712.4619,
+        "AllocatedBytes": 104826280,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 847.1925,
+        "AllocatedBytes": 104827280,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 847.6559,
+        "AllocatedBytes": 104827288,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4263.8519,
+    "WarmupQueryMs": 3670.4144,
+    "PeakWorkingSetBytes": 602353664,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 693.5634,
+    "Initialize": {
+      "Milliseconds": 1421.0983,
+      "AllocatedBytes": 70722360,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 947.8521,
+      "AllocatedBytes": 104799728,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 706.6411,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 762.2033,
+        "AllocatedBytes": 104801344,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 664.7501,
+        "AllocatedBytes": 104799728,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 683.817,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 916.0424,
+        "AllocatedBytes": 104799768,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 627.5223,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 715.5942,
+        "AllocatedBytes": 104799464,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 799.3878,
+        "AllocatedBytes": 104799824,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 858.1931,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4257.8089,
+    "WarmupQueryMs": 3636.7930000000006,
+    "PeakWorkingSetBytes": 671469568,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 709.282,
+    "Initialize": {
+      "Milliseconds": 2296.5784,
+      "AllocatedBytes": 344441808,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1547.6705,
+      "AllocatedBytes": 105013088,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 786.1565,
+        "AllocatedBytes": 104827304,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 641.5281,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 772.1702,
+        "AllocatedBytes": 104828592,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 2
+      },
+      {
+        "Milliseconds": 634.9072,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 850.0599,
+        "AllocatedBytes": 104827288,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 713.8395,
+        "AllocatedBytes": 104827320,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 766.1381,
+        "AllocatedBytes": 104827312,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 772.0913,
+        "AllocatedBytes": 104827304,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 637.0794,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4708.4869,
+    "WarmupQueryMs": 4086.6079,
+    "PeakWorkingSetBytes": 709980160,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 726.741,
+    "Initialize": {
+      "Milliseconds": 1458.0079,
+      "AllocatedBytes": 70719056,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 846.9656,
+      "AllocatedBytes": 104799728,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 559.3631,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 859.6798,
+        "AllocatedBytes": 104799976,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 544.8985,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 603.0652,
+        "AllocatedBytes": 104806896,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 558.206,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 771.0554,
+        "AllocatedBytes": 104799768,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 557.7871,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 629.2739,
+        "AllocatedBytes": 104799712,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 544.8335,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3697.202,
+    "WarmupQueryMs": 3063.2589999999996,
+    "PeakWorkingSetBytes": 813703168,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 701.8857,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1125.2992,
+      "AllocatedBytes": 83675672,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 762.872,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 920.096,
+        "AllocatedBytes": 83675488,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 892.4163,
+        "AllocatedBytes": 83675592,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 807.0562,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 777.9291,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 845.8029,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 847.9783,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 921.1974,
+        "AllocatedBytes": 83675632,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 880.7653,
+        "AllocatedBytes": 83675624,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4785.32,
+    "WarmupQueryMs": 4201.0489,
+    "PeakWorkingSetBytes": 376758272,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1081.0134,
+    "Initialize": {
+      "Milliseconds": 1753.0901,
+      "AllocatedBytes": 128397456,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 664.1046,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 445.2893,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 485.9869,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 635.9667,
+        "AllocatedBytes": 80798808,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 443.8704,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 519.2581,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 529.25,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 716.9964,
+        "AllocatedBytes": 80798824,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 497.3528,
+        "AllocatedBytes": 80806712,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 502.1549,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2848.3086,
+    "WarmupQueryMs": 2559.3502,
+    "PeakWorkingSetBytes": 662351872,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1349.4856,
+    "Initialize": {
+      "Milliseconds": 2811.2089,
+      "AllocatedBytes": 520517640,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1116.1402,
+      "AllocatedBytes": 81004872,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 484.0764,
+        "AllocatedBytes": 80823672,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 658.653,
+        "AllocatedBytes": 80825776,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 582.505,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 629.2384,
+        "AllocatedBytes": 80825048,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 524.1529,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 608.8909,
+        "AllocatedBytes": 80825264,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 541.2909,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 601.1443,
+        "AllocatedBytes": 80825056,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 562.1181,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3079.5537,
+    "WarmupQueryMs": 2886.3283,
+    "PeakWorkingSetBytes": 841211904,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1134.5151,
+    "Initialize": {
+      "Milliseconds": 1783.6337,
+      "AllocatedBytes": 128394152,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 615.3587,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 560.0402,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 477.0597,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 605.4391,
+        "AllocatedBytes": 80798848,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 439.2084,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 537.6052,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 418.0086,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 621.9948,
+        "AllocatedBytes": 80798824,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 463.1031,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 469.629,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2831.0731,
+    "WarmupQueryMs": 2581.6207000000004,
+    "PeakWorkingSetBytes": 916414464,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1078.5297,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1393.0149,
+      "AllocatedBytes": 185556144,
+      "Gen0": 25,
+      "Gen1": 12,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 1380.854,
+        "AllocatedBytes": 185555640,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 967.2014,
+        "AllocatedBytes": 185555336,
+        "Gen0": 26,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 934.2905,
+        "AllocatedBytes": 185555696,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 975.0387,
+        "AllocatedBytes": 185555408,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1274.4559,
+        "AllocatedBytes": 185555648,
+        "Gen0": 26,
+        "Gen1": 14,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1011.1707,
+        "AllocatedBytes": 185555592,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 812.4768,
+        "AllocatedBytes": 185555408,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1088.853,
+        "AllocatedBytes": 185555240,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 922.3548,
+        "AllocatedBytes": 185555408,
+        "Gen0": 25,
+        "Gen1": 12,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 5353.998,
+    "WarmupQueryMs": 5120.277499999999,
+    "PeakWorkingSetBytes": 836460544,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1079.9516,
+    "Initialize": {
+      "Milliseconds": 2692.5165,
+      "AllocatedBytes": 520517600,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1153.6084,
+      "AllocatedBytes": 81004872,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 495.908,
+        "AllocatedBytes": 80823672,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 620.5052,
+        "AllocatedBytes": 80828152,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 646.4418,
+        "AllocatedBytes": 80823992,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 559.1368,
+        "AllocatedBytes": 80825056,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 575.8668,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 633.2955,
+        "AllocatedBytes": 80825032,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 493.325,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 616.0125,
+        "AllocatedBytes": 80825032,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 541.6641,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3234.8596,
+    "WarmupQueryMs": 2976.8559,
+    "PeakWorkingSetBytes": 668557312,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 659.2052,
+    "Initialize": {
+      "Milliseconds": 2308.7662,
+      "AllocatedBytes": 344612944,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 280.8952,
+      "AllocatedBytes": 308144,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 52.3961,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.8871,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 53.0911,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 41.8267,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.3048,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.3928,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.089,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 41.1944,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.0152,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 19,
+    "WarmupMs": 1015.9772,
+    "WarmupQueryMs": 1011.2859000000001,
+    "PeakWorkingSetBytes": 420847616,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 725.4722,
+    "Initialize": {
+      "Milliseconds": 1618.9731,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 81.7341,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 49.8576,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 55.0327,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.7566,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 45.3417,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.8321,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 45.8409,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 45.2991,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.9509,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.1213,
+        "AllocatedBytes": 121024,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 21,
+    "WarmupMs": 1046.3186,
+    "WarmupQueryMs": 1042.662,
+    "PeakWorkingSetBytes": 429678592,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 729.9434,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1302.8849,
+      "AllocatedBytes": 24499208,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 701.4279,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 747.2681,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 791.4678,
+        "AllocatedBytes": 24471464,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 742.334,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 734.9473,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 721.6222,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 709.5916,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 807.4227,
+        "AllocatedBytes": 24465936,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 710.4304,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3703.5661,
+    "WarmupQueryMs": 3702.6683,
+    "PeakWorkingSetBytes": 234995712,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 653.5595,
+    "Initialize": {
+      "Milliseconds": 2443.7416,
+      "AllocatedBytes": 344600408,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 379.7596,
+      "AllocatedBytes": 320504,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 94.2377,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 81.7478,
+        "AllocatedBytes": 166736,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 92.7426,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.9708,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.4526,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.7345,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 84.4844,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 101.3902,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 106.397,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1076.9816,
+    "WarmupQueryMs": 1073.9765000000002,
+    "PeakWorkingSetBytes": 272314368,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 716.4198,
+    "Initialize": {
+      "Milliseconds": 1554.662,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 119.5435,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 87.6024,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 100.9396,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.0958,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 98.4453,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.934,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.9088,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.5567,
+        "AllocatedBytes": 121208,
+        "Gen0": 1,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.5614,
+        "AllocatedBytes": 121656,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 99.3922,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1008.6025,
+    "WarmupQueryMs": 1006.5496,
+    "PeakWorkingSetBytes": 258936832,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 756.0395,
+    "Initialize": {
+      "Milliseconds": 1510.8159,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 84.032,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 49.1285,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 44.1767,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.5648,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.237,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.1177,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.1945,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.4435,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.4627,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.6372,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 20,
+    "WarmupMs": 1013.1518,
+    "WarmupQueryMs": 1012.3883000000001,
+    "PeakWorkingSetBytes": 422211584,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 721.6982,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1249.9986,
+      "AllocatedBytes": 24506824,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 677.3077,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 766.0085,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 799.9708,
+        "AllocatedBytes": 24476040,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 732.163,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 728.7968,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 747.9424,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 727.7101,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 793.7982,
+        "AllocatedBytes": 24475296,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 715.3013,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3748.1904,
+    "WarmupQueryMs": 3747.7519,
+    "PeakWorkingSetBytes": 238968832,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 680.6572,
+    "Initialize": {
+      "Milliseconds": 2200.357,
+      "AllocatedBytes": 344612744,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 327.3693,
+      "AllocatedBytes": 192312,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 84.0846,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 99.766,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.3064,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.1626,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.0176,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 92.0997,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.772,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 84.1403,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.195,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1052.0873,
+    "WarmupQueryMs": 1051.503,
+    "PeakWorkingSetBytes": 272945152,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 715.7817,
+    "Initialize": {
+      "Milliseconds": 1459.5614,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 111.3449,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 76.3213,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.4442,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.9888,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.127,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.0398,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.6313,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.8647,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 91.1229,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.4948,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1028.5418,
+    "WarmupQueryMs": 1027.9849,
+    "PeakWorkingSetBytes": 262696960,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 655.7203,
+    "Initialize": {
+      "Milliseconds": 2274.0894,
+      "AllocatedBytes": 344613232,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 315.0642,
+      "AllocatedBytes": 192312,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 52.6398,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.8888,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 56.4108,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 50.8277,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.1545,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.6977,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.4851,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.5585,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 54.1385,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 20,
+    "WarmupMs": 1014.9385,
+    "WarmupQueryMs": 1014.1863999999998,
+    "PeakWorkingSetBytes": 449847296,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 700.713,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 114.4216,
+      "AllocatedBytes": 416,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 66.8779,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 67.692,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 66.3699,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 66.3611,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 66.4107,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 62.9347,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 67.4248,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 67.2176,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 68.0397,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 14,
+    "WarmupMs": 1009.7508,
+    "WarmupQueryMs": 1009.2687000000001,
+    "PeakWorkingSetBytes": 128638976,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 708.0106,
+    "Initialize": {
+      "Milliseconds": 2111.5056,
+      "AllocatedBytes": 328398144,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 297.1098,
+      "AllocatedBytes": 206752,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 21.2693,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.1669,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 23.5059,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.6842,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.3326,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.8669,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 20.7608,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.7232,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.8137,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 45,
+    "WarmupMs": 1007.775,
+    "WarmupQueryMs": 1007.1714,
+    "PeakWorkingSetBytes": 260378624,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 680.9732,
+    "Initialize": {
+      "Milliseconds": 1276.8157,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 37.981,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 24.4921,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 24.66,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 24.5339,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 24.2454,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.588,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 26.6045,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 24.8435,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 24.0795,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.167,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 47,
+    "WarmupMs": 1009.2041,
+    "WarmupQueryMs": 1008.5315,
+    "PeakWorkingSetBytes": 251879424,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 666.3174,
+    "Initialize": {
+      "Milliseconds": 2068.6195,
+      "AllocatedBytes": 328397800,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 245.6231,
+      "AllocatedBytes": 206896,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 7.4751,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.7952,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 9.0409,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.4393,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.8053,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.8299,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.618,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.8255,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.9874,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 142,
+    "WarmupMs": 1003.0296,
+    "WarmupQueryMs": 1001.6957000000002,
+    "PeakWorkingSetBytes": 284327936,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 655.1735,
+    "Initialize": {
+      "Milliseconds": 1330.6009,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 26.1215,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 6.442,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.414,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.7195,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.0629,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.9763,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.7907,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.4587,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.2196,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.7591,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 145,
+    "WarmupMs": 1002.1457,
+    "WarmupQueryMs": 1000.5895999999998,
+    "PeakWorkingSetBytes": 271106048,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 681.0716,
+    "Initialize": {
+      "Milliseconds": 2135.9015,
+      "AllocatedBytes": 328398144,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 325.1545,
+      "AllocatedBytes": 211704,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 79.75,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.6625,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.5892,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.492,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.0155,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.7949,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 78.6194,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.5988,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 80.02,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1035.9323,
+    "WarmupQueryMs": 1035.3436,
+    "PeakWorkingSetBytes": 260489216,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 786.7435,
+    "Initialize": {
+      "Milliseconds": 1349.0618,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 130.6218,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 87.0394,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.9121,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.9694,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.7878,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.3647,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 102.3179,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.283,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 103.2937,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.3492,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1015.6052,
+    "WarmupQueryMs": 1014.8493000000001,
+    "PeakWorkingSetBytes": 249630720,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 749.9693,
+    "Initialize": {
+      "Milliseconds": 2303.675,
+      "AllocatedBytes": 328397800,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 293.1182,
+      "AllocatedBytes": 211560,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 34.5548,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 33.123,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 34.194,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 29.0787,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 31.9183,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.8198,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 38.5947,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.4204,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 39.3629,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 31,
+    "WarmupMs": 1002.3349,
+    "WarmupQueryMs": 1001.1983,
+    "PeakWorkingSetBytes": 334925824,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 670.2535,
+    "Initialize": {
+      "Milliseconds": 1333.0637,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 60.637,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 37.344,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.1711,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 31.741,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 31.8327,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.418,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.648,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.9063,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 27.6421,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.386,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 31,
+    "WarmupMs": 1016.5836,
+    "WarmupQueryMs": 1015.4263000000002,
+    "PeakWorkingSetBytes": 324481024,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 1,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 741.4836,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 647.8019,
+      "AllocatedBytes": 22844336,
+      "Gen0": 1,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 232.9049,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 238.664,
+        "AllocatedBytes": 22833864,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 213.677,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 215.1293,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 220.9345,
+        "AllocatedBytes": 22839848,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 207.4853,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 226.8733,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 238.5681,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 303.19,
+        "AllocatedBytes": 22834392,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 1238.472,
+    "WarmupQueryMs": 1238.0031000000001,
+    "PeakWorkingSetBytes": 210333696,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 667.2381,
+    "Initialize": {
+      "Milliseconds": 1405.6255,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 119.6676,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 89.4334,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 79.6538,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.4254,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.4714,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.6141,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 84.9471,
+        "AllocatedBytes": 121208,
+        "Gen0": 1,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 84.3898,
+        "AllocatedBytes": 121656,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.7203,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 115.1935,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1076.4689,
+    "WarmupQueryMs": 1074.1599,
+    "PeakWorkingSetBytes": 261394432,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 727.1148,
+    "Initialize": {
+      "Milliseconds": 2446.3701,
+      "AllocatedBytes": 344612944,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 311.6943,
+      "AllocatedBytes": 308144,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 50.5387,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 59.4974,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 54.8738,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.1244,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 55.9484,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.9373,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 44.684,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.5047,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.5643,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 18,
+    "WarmupMs": 1017.3913,
+    "WarmupQueryMs": 1013.6172999999999,
+    "PeakWorkingSetBytes": 434262016,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 675.1493,
+    "Initialize": {
+      "Milliseconds": 1368.1085,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 94.3525,
+      "AllocatedBytes": 121184,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 54.952,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 53.7502,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 56.1966,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 60.1508,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 54.4796,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 49.3655,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.299,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 45.3425,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 42.4044,
+        "AllocatedBytes": 120984,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 19,
+    "WarmupMs": 1025.6331,
+    "WarmupQueryMs": 1022.3686,
+    "PeakWorkingSetBytes": 438661120,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 717.7253,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1249.2632,
+      "AllocatedBytes": 24499272,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 756.3965,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 782.1908,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 749.3142,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 673.5713,
+        "AllocatedBytes": 24463752,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 777.1993,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 766.7328,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 736.5659,
+        "AllocatedBytes": 24462728,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 754.0502,
+        "AllocatedBytes": 24463400,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 715.2638,
+        "AllocatedBytes": 24462728,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3890.3622,
+    "WarmupQueryMs": 3889.3089999999993,
+    "PeakWorkingSetBytes": 235544576,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 800,
+    "GenerateMs": 710.4762,
+    "Initialize": {
+      "Milliseconds": 2314.4952,
+      "AllocatedBytes": 344600408,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 320.963,
+      "AllocatedBytes": 321056,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 82.3675,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 98.9458,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 87.829,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.2482,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 86.3532,
+        "AllocatedBytes": 142112,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 80.9768,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.9705,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.7505,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 80.2026,
+        "AllocatedBytes": 142160,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1060.4755,
+    "WarmupQueryMs": 1057.5225000000003,
+    "PeakWorkingSetBytes": 270618624,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 662.7768,
+    "Initialize": {
+      "Milliseconds": 2307.6118,
+      "AllocatedBytes": 344600904,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 277.1684,
+      "AllocatedBytes": 204648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 56.0586,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.8498,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 43.8735,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 46.9606,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 46.5474,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.7906,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.0342,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 47.0617,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 48.957,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 21,
+    "WarmupMs": 1052.3164,
+    "WarmupQueryMs": 1051.5896,
+    "PeakWorkingSetBytes": 433848320,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 648.7993,
+    "Initialize": {
+      "Milliseconds": 1367.9573,
+      "AllocatedBytes": 70784992,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 85.6491,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 52.7946,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 44.7531,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 46.205,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.0937,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 51.9819,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 57.8282,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 44.9569,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 52.4891,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 54.5602,
+        "AllocatedBytes": 5192,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 21,
+    "WarmupMs": 1046.6689,
+    "WarmupQueryMs": 1045.778,
+    "PeakWorkingSetBytes": 431607808,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 658.0028,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1287.9265,
+      "AllocatedBytes": 24504520,
+      "Gen0": 3,
+      "Gen1": 1,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 1095.6137,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 772.2765,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 856.4296,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 831.3219,
+        "AllocatedBytes": 24473568,
+        "Gen0": 5,
+        "Gen1": 3,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 738.2331,
+        "AllocatedBytes": 24469464,
+        "Gen0": 3,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 772.0592,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 758.6876,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 728.1806,
+        "AllocatedBytes": 24477184,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 732.882,
+        "AllocatedBytes": 24469464,
+        "Gen0": 4,
+        "Gen1": 2,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3864.4455,
+    "WarmupQueryMs": 3863.9827999999998,
+    "PeakWorkingSetBytes": 235839488,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 667.6065,
+    "Initialize": {
+      "Milliseconds": 2202.2451,
+      "AllocatedBytes": 344600408,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 324.6341,
+      "AllocatedBytes": 204648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 88.5765,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.0109,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.0685,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 83.483,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 83.3139,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 90.7073,
+        "AllocatedBytes": 26280,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 85.5842,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.4449,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.965,
+        "AllocatedBytes": 26328,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1037.1638,
+    "WarmupQueryMs": 1036.5094,
+    "PeakWorkingSetBytes": 275451904,
+    "Correct": true
+  },
+  {
+    "Analysis": "Top20",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 20,
+    "GenerateMs": 718.0632,
+    "Initialize": {
+      "Milliseconds": 1625.9921,
+      "AllocatedBytes": 70788296,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 125.9217,
+      "AllocatedBytes": 5352,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 89.0806,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 92.9324,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 93.3955,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 97.8707,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 112.259,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 81.2824,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.9974,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 89.5382,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.6979,
+        "AllocatedBytes": 5152,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1028.7585,
+    "WarmupQueryMs": 1028.0379,
+    "PeakWorkingSetBytes": 260038656,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 752.6991,
+    "Initialize": {
+      "Milliseconds": 1331.7271,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 26.6905,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 5.9245,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.1448,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.1817,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 5.8843,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.1299,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.3968,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.4982,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.6079,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.3735,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 145,
+    "WarmupMs": 1007.6297,
+    "WarmupQueryMs": 1005.6926000000002,
+    "PeakWorkingSetBytes": 272371712,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 679.0143,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 127.207,
+      "AllocatedBytes": 416,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 67.5159,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 76.6553,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 75.0993,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 78.1125,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 68.6097,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 71.0968,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 62.1789,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 62.6632,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 65.7361,
+        "AllocatedBytes": 216,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 14,
+    "WarmupMs": 1025.4458,
+    "WarmupQueryMs": 1024.9901,
+    "PeakWorkingSetBytes": 128688128,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 672.378,
+    "Initialize": {
+      "Milliseconds": 2114.7127,
+      "AllocatedBytes": 328398144,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 258.5767,
+      "AllocatedBytes": 206648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 20.1354,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 25.3631,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 23.6541,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 27.1095,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 25.5904,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 27.164,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 25.1872,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 25.7487,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.0852,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 45,
+    "WarmupMs": 1017.5573,
+    "WarmupQueryMs": 1016.9748999999996,
+    "PeakWorkingSetBytes": 264556544,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 653.5868,
+    "Initialize": {
+      "Milliseconds": 1347.6083,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 41.973,
+      "AllocatedBytes": 3360,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 18.9385,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 18.5427,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.3547,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.5619,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 20.8314,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 23.0328,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 22.1376,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.6217,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 21.5722,
+        "AllocatedBytes": 2264,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 48,
+    "WarmupMs": 1018.3207,
+    "WarmupQueryMs": 1017.6527,
+    "PeakWorkingSetBytes": 248508416,
+    "Correct": true
+  },
+  {
+    "Analysis": "FilterSummary",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1,
+    "GenerateMs": 670.8411,
+    "Initialize": {
+      "Milliseconds": 2117.7709,
+      "AllocatedBytes": 328397768,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 244.9886,
+      "AllocatedBytes": 206648,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 7.1413,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.5247,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.5258,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 7.2143,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.5786,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.4463,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.0189,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.5423,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 6.513,
+        "AllocatedBytes": 23968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 139,
+    "WarmupMs": 1004.8065,
+    "WarmupQueryMs": 1003.4572000000001,
+    "PeakWorkingSetBytes": 283222016,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 728.3673,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 528.9854,
+      "AllocatedBytes": 22844336,
+      "Gen0": 1,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 245.6978,
+        "AllocatedBytes": 22840104,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 234.461,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 218.0142,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 226.4981,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 238.151,
+        "AllocatedBytes": 22834392,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 235.4429,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 237.7468,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 248.1621,
+        "AllocatedBytes": 22839912,
+        "Gen0": 2,
+        "Gen1": 2,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 278.6462,
+        "AllocatedBytes": 22833816,
+        "Gen0": 1,
+        "Gen1": 1,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 1312.0341,
+    "WarmupQueryMs": 1311.6045,
+    "PeakWorkingSetBytes": 206299136,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 799.5956,
+    "Initialize": {
+      "Milliseconds": 2320.2966,
+      "AllocatedBytes": 328398216,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 357.7834,
+      "AllocatedBytes": 211560,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 79.9792,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 104.5685,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 95.1926,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 97.3237,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 100.3944,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 120.474,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.4758,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.4397,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.1331,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 12,
+    "WarmupMs": 1048.8042,
+    "WarmupQueryMs": 1048.2342,
+    "PeakWorkingSetBytes": 266088448,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 698.5397,
+    "Initialize": {
+      "Milliseconds": 1343.5853,
+      "AllocatedBytes": 64313408,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 144.1354,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 91.95,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 105.1815,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 99.1547,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 105.995,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 106.0666,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 96.0699,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 99.682,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 94.5473,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 88.6368,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 11,
+    "WarmupMs": 1074.9383,
+    "WarmupQueryMs": 1074.2724999999998,
+    "PeakWorkingSetBytes": 249782272,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 656.5492,
+    "Initialize": {
+      "Milliseconds": 2245.8901,
+      "AllocatedBytes": 328397800,
+      "Gen0": 78,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 296.0423,
+      "AllocatedBytes": 211560,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 28.5864,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 38.5352,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 31.0119,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 32.2709,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 36.7743,
+        "AllocatedBytes": 28920,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 28.6232,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 34.7527,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 33.5367,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.4041,
+        "AllocatedBytes": 28968,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 28,
+    "WarmupMs": 1021.302,
+    "WarmupQueryMs": 1019.7422000000003,
+    "PeakWorkingSetBytes": 337788928,
+    "Correct": true
+  },
+  {
+    "Analysis": "MonthlyGroups",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 48,
+    "GenerateMs": 641.0723,
+    "Initialize": {
+      "Milliseconds": 1267.5093,
+      "AllocatedBytes": 64310104,
+      "Gen0": 14,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 61.2541,
+      "AllocatedBytes": 8920,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 35.3791,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 33.1455,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 39.5784,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 31.6505,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 33.3945,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.5932,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 37.5003,
+        "AllocatedBytes": 7864,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.5847,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 35.6457,
+        "AllocatedBytes": 7824,
+        "Gen0": 0,
+        "Gen1": 0,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 29,
+    "WarmupMs": 1030.7926,
+    "WarmupQueryMs": 1029.5866999999998,
+    "PeakWorkingSetBytes": 324009984,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 694.1346,
+    "Initialize": {
+      "Milliseconds": 2193.5056,
+      "AllocatedBytes": 344441704,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1553.7751,
+      "AllocatedBytes": 105011832,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 778.374,
+        "AllocatedBytes": 104827320,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 661.1606,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 790.1535,
+        "AllocatedBytes": 104827304,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 716.7117,
+        "AllocatedBytes": 104827280,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 808.0648,
+        "AllocatedBytes": 104827312,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 864.0019,
+        "AllocatedBytes": 104827264,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 771.0551,
+        "AllocatedBytes": 104827304,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 745.7236,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 824.7755,
+        "AllocatedBytes": 104827272,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4285.6897,
+    "WarmupQueryMs": 3705.7419,
+    "PeakWorkingSetBytes": 596140032,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 696.7231,
+    "Initialize": {
+      "Milliseconds": 1456.9807,
+      "AllocatedBytes": 70722360,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 976.6057,
+      "AllocatedBytes": 104799728,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 777.4163,
+        "AllocatedBytes": 104799816,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 705.3779,
+        "AllocatedBytes": 104799464,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 661.1421,
+        "AllocatedBytes": 104803832,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 644.5025,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 662.1137,
+        "AllocatedBytes": 104799800,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 737.9686,
+        "AllocatedBytes": 104799816,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 588.8665,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 669.9689,
+        "AllocatedBytes": 104799704,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 618.9245,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3881.247,
+    "WarmupQueryMs": 3269.0416,
+    "PeakWorkingSetBytes": 611184640,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 657.8344,
+    "Initialize": {
+      "Milliseconds": 2205.3351,
+      "AllocatedBytes": 344441784,
+      "Gen0": 81,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1398.845,
+      "AllocatedBytes": 105011832,
+      "Gen0": 16,
+      "Gen1": 8,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 718.7824,
+        "AllocatedBytes": 104827336,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 628.6069,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 716.4575,
+        "AllocatedBytes": 104828520,
+        "Gen0": 16,
+        "Gen1": 9,
+        "Gen2": 2
+      },
+      {
+        "Milliseconds": 558.0037,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 771.6137,
+        "AllocatedBytes": 104827312,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 770.15,
+        "AllocatedBytes": 104827288,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 573.4788,
+        "AllocatedBytes": 104826056,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 781.5653,
+        "AllocatedBytes": 104827328,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 707.6367,
+        "AllocatedBytes": 104827312,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4164.3323,
+    "WarmupQueryMs": 3578.5739,
+    "PeakWorkingSetBytes": 712269824,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 717.148,
+    "Initialize": {
+      "Milliseconds": 1558.1718,
+      "AllocatedBytes": 70719056,
+      "Gen0": 16,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 915.9786,
+      "AllocatedBytes": 104799728,
+      "Gen0": 15,
+      "Gen1": 7,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 644.3354,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 679.3208,
+        "AllocatedBytes": 104801056,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 662.5703,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 699.1239,
+        "AllocatedBytes": 104799736,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 699.4954,
+        "AllocatedBytes": 104799784,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 608.0053,
+        "AllocatedBytes": 104799240,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 679.0762,
+        "AllocatedBytes": 104799720,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 565.5477,
+        "AllocatedBytes": 104799240,
+        "Gen0": 14,
+        "Gen1": 7,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 765.7269,
+        "AllocatedBytes": 104799800,
+        "Gen0": 15,
+        "Gen1": 8,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3957.0959,
+    "WarmupQueryMs": 3342.5489,
+    "PeakWorkingSetBytes": 845070336,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinCustomers",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 0,
+    "ResultRows": 1000000,
+    "GenerateMs": 664.2917,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1089.7721,
+      "AllocatedBytes": 83675672,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 770.0562,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 973.8529,
+        "AllocatedBytes": 83675464,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 885.8341,
+        "AllocatedBytes": 83675608,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 798.7469,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 797.0492,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 851.5017,
+        "AllocatedBytes": 83675296,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 864.4779,
+        "AllocatedBytes": 83675296,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 921.3444,
+        "AllocatedBytes": 83675616,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 885.2302,
+        "AllocatedBytes": 83675616,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 4775.2855,
+    "WarmupQueryMs": 4139.1506,
+    "PeakWorkingSetBytes": 383418368,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1126.0127,
+    "Initialize": {
+      "Milliseconds": 1714.7725,
+      "AllocatedBytes": 128397456,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 675.3985,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 511.5069,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 501.2786,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 621.8229,
+        "AllocatedBytes": 80798792,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 531.6245,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 525.54,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 512.738,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 548.803,
+        "AllocatedBytes": 80798816,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 450.0312,
+        "AllocatedBytes": 80798816,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 464.7312,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2943.8332,
+    "WarmupQueryMs": 2686.6961,
+    "PeakWorkingSetBytes": 662749184,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1073.7596,
+    "Initialize": {
+      "Milliseconds": 2831.1112,
+      "AllocatedBytes": 520530008,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1151.7049,
+      "AllocatedBytes": 81017160,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 438.2207,
+        "AllocatedBytes": 80823672,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 608.4065,
+        "AllocatedBytes": 80825248,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 527.8899,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 580.0359,
+        "AllocatedBytes": 80825000,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 573.2791,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 635.6467,
+        "AllocatedBytes": 80825224,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 507.7786,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 637.6204,
+        "AllocatedBytes": 80825032,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 581.3626,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3191.6342,
+    "WarmupQueryMs": 2999.9834000000005,
+    "PeakWorkingSetBytes": 886947840,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "NativeDuckDb",
+    "RequestedThreads": 0,
+    "EffectiveThreads": 32,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1068.8752,
+    "Initialize": {
+      "Milliseconds": 1657.7546,
+      "AllocatedBytes": 128394152,
+      "Gen0": 30,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 563.3245,
+      "AllocatedBytes": 80798720,
+      "Gen0": 10,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 444.2712,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 418.1567,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 545.5632,
+        "AllocatedBytes": 80798824,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 391.9033,
+        "AllocatedBytes": 80798232,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 432.1514,
+        "AllocatedBytes": 80798456,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 434.5001,
+        "AllocatedBytes": 80798456,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 498.8493,
+        "AllocatedBytes": 80798592,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 501.7445,
+        "AllocatedBytes": 80798232,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 484.9868,
+        "AllocatedBytes": 80798840,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 2667.4482,
+    "WarmupQueryMs": 2393.309,
+    "PeakWorkingSetBytes": 851640320,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "Linq",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1029.2643,
+    "Initialize": {
+      "Milliseconds": 0,
+      "AllocatedBytes": 0,
+      "Gen0": 0,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1298.1029,
+      "AllocatedBytes": 185556144,
+      "Gen0": 25,
+      "Gen1": 12,
+      "Gen2": 1
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 1292.2659,
+        "AllocatedBytes": 185555616,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1093.4333,
+        "AllocatedBytes": 185555624,
+        "Gen0": 25,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1093.682,
+        "AllocatedBytes": 185555408,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1116.1046,
+        "AllocatedBytes": 185555720,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1085.8096,
+        "AllocatedBytes": 185556496,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1289.9194,
+        "AllocatedBytes": 185559320,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 992.095,
+        "AllocatedBytes": 185555384,
+        "Gen0": 25,
+        "Gen1": 13,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 1062.6583,
+        "AllocatedBytes": 185555696,
+        "Gen0": 24,
+        "Gen1": 12,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 1091.1877,
+        "AllocatedBytes": 185555408,
+        "Gen0": 26,
+        "Gen1": 13,
+        "Gen2": 1
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 5926.2,
+    "WarmupQueryMs": 5678.4437,
+    "PeakWorkingSetBytes": 753664000,
+    "Correct": true
+  },
+  {
+    "Analysis": "JoinMillionPayments",
+    "Backend": "DuckFrame",
+    "RequestedThreads": 1,
+    "EffectiveThreads": 1,
+    "Repetition": 2,
+    "InputRows": 1000000,
+    "CustomerRows": 100000,
+    "ProductRows": 1000,
+    "PaymentRows": 1000000,
+    "ResultRows": 1000000,
+    "GenerateMs": 1112.4661,
+    "Initialize": {
+      "Milliseconds": 2824.6464,
+      "AllocatedBytes": 520517600,
+      "Gen0": 123,
+      "Gen1": 0,
+      "Gen2": 0
+    },
+    "FirstQuery": {
+      "Milliseconds": 1207.7654,
+      "AllocatedBytes": 81004872,
+      "Gen0": 11,
+      "Gen1": 4,
+      "Gen2": 0
+    },
+    "WarmQueries": [
+      {
+        "Milliseconds": 517.8329,
+        "AllocatedBytes": 80823672,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 692.517,
+        "AllocatedBytes": 80825280,
+        "Gen0": 12,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 549.024,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 616.1046,
+        "AllocatedBytes": 80825056,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 538.2007,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 618.7551,
+        "AllocatedBytes": 80825264,
+        "Gen0": 12,
+        "Gen1": 7,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 553.9222,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      },
+      {
+        "Milliseconds": 627.8083,
+        "AllocatedBytes": 80825024,
+        "Gen0": 11,
+        "Gen1": 6,
+        "Gen2": 1
+      },
+      {
+        "Milliseconds": 664.5995,
+        "AllocatedBytes": 80823768,
+        "Gen0": 10,
+        "Gen1": 5,
+        "Gen2": 0
+      }
+    ],
+    "WarmupCount": 5,
+    "WarmupMs": 3110.0657,
+    "WarmupQueryMs": 2928.3122000000003,
+    "PeakWorkingSetBytes": 659820544,
+    "Correct": true
+  }
+]
