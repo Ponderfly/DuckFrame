@@ -40,7 +40,8 @@ internal static class DictionaryRows
                             $"字典行的键必须为 string，实际为 {entry.Key?.GetType() ?? typeof(object)}。");
                     }
 
-                    result[key] = entry.Value;
+                    if (!result.TryAdd(key, entry.Value))
+                        throw new DuckFrameException($"字典行存在重复列名 \"{key}\"（忽略大小写）。");
                 }
 
                 return result;
@@ -76,7 +77,8 @@ internal static class DictionaryRows
         var result = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var pair in (IEnumerable<KeyValuePair<string, TValue>>)item!)
-            result[pair.Key] = pair.Value;
+            if (!result.TryAdd(pair.Key, pair.Value))
+                throw new DuckFrameException($"字典行存在重复列名 \"{pair.Key}\"（忽略大小写）。");
 
         return result;
     }

@@ -9,7 +9,8 @@ internal static class TablePrinter
         IReadOnlyList<DuckColumn> columns,
         IReadOnlyList<object?[]> rows,
         int maxRows,
-        int maxWidth)
+        int maxWidth,
+        bool complete = true)
     {
         var shown = rows.Take(maxRows).ToArray();
 
@@ -41,7 +42,7 @@ internal static class TablePrinter
             AppendRow(sb, row, widths);
 
         AppendBorder(sb, widths, '└', '┴', '┘');
-        sb.AppendLine($"{rows.Count} row(s) ({shown.Length} shown)");
+        sb.AppendLine($"{(complete ? "" : "at least ")}{rows.Count} row(s) ({shown.Length} shown)");
 
         return sb.ToString();
     }

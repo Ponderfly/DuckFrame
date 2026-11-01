@@ -16,6 +16,7 @@ internal static class RowSchemaInference
 
         foreach (var row in rows.Take(options.SampleSize))
         {
+            NameMatcher.EnsureUnique(row.Keys);
             foreach (var (key, value) in row)
             {
                 if (!samples.TryGetValue(key, out var values))
@@ -24,12 +25,18 @@ internal static class RowSchemaInference
                     samples[key] = values = [];
                 }
 
-                if (value is not null)
+                if (value is not null and not DBNull)
                     values.Add(value);
             }
         }
 
         var overrides = tableOptions?.ColumnTypes;
+        if (overrides is not null)
+        {
+            NameMatcher.EnsureUnique(overrides.Keys);
+            foreach (var name in overrides.Keys)
+                if (samples.TryAdd(name, [])) names.Add(name);
+        }
 
         if (names.Count == 0)
         {
@@ -43,7 +50,7 @@ internal static class RowSchemaInference
         return names.Select(name =>
         {
             var (duckType, clrType) = InferColumn(samples[name], options);
-            if (overrides is not null && overrides.TryGetValue(name, out var explicitType))
+            if (tableOptions?.FindColumnType(name) is { } explicitType)
                 duckType = explicitType;
 
             return new ColumnDefinition(name, duckType, clrType);

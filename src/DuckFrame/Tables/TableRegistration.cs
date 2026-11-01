@@ -14,7 +14,9 @@ internal sealed class TableRegistration
     public required RefreshPolicy Policy { get; init; }
 
     /// <summary>重新生成行的方法；首写与 Refresh 共用，保证源只物化一次。</summary>
-    public Func<IEnumerable<object?[]>>? Reload { get; init; }
+    public Func<IEnumerable<object?[]>>? Reload { get; set; }
+
+    public WeakReference<object>? InlineSource { get; set; }
 
     public bool Persistent { get; init; }
 

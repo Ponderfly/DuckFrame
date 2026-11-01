@@ -9,7 +9,7 @@ public enum RefreshPolicy
     /// <summary>只有显式调用 <see cref="DuckSession.Refresh"/> 才重载。</summary>
     Manual,
 
-    /// <summary>每次查询前检查源对象是否变化。第一期未实现，仅保留枚举值。</summary>
+    /// <summary>预留的自动刷新策略；尚未实现，选择时抛出 NotSupportedException。</summary>
     OnQuery,
 }
 

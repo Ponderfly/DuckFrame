@@ -41,13 +41,13 @@
 | LIST 的 DDL | 只能写 `INTEGER[]`；`LIST(INTEGER)` 报 *Expected a constant as type modifier* | 类型推导输出 `T[]` |
 | 参数占位符 | SQL 写 `$p0`，`ParameterName` 写 `p0`（不带 `$`）；`:p0` 语法错误，`@p0` 被当列名 | 固定 `$` 前缀 |
 | 列表参数 | `List<int>` / `string[]` 可直接作为参数：`= ANY($p0)`、`unnest($p0)` | 标量集合插值为 LIST 参数（§5.1） |
-| TEMP 表 | 不加 `temp.` 前缀即可解析，appender 也能按表名找到 | 限定名只加引号 |
+| TEMP 表 | 不加 `temp.` 前缀即可解析，appender 也能按表名找到 | 句柄和 appender 显式限定 catalog/schema，防止同名 TEMP 表遮蔽持久表 |
 | `GetDataTypeName` | 返回 DuckDB.NET 枚举名：`Decimal`、`UnsignedTinyInt`、`List`、`Struct`、`TimestampTz`… 不带精度和元素类型 | 不能直接用于 DDL，需映射（`DuckDbTypes`） |
 | DECIMAL 精度 | 只能从 `GetSchemaTable()` 的 `NumericPrecision` / `NumericScale` 取得 | 结果再注册时据此重建 `DECIMAL(p,s)` |
 | 读取端 CLR 类型 | DATE→`DateOnly`，TIME→`TimeOnly`，TIMESTAMPTZ→`DateTime`（Kind=Unspecified，值为 UTC），HUGEINT→`BigInteger`，LIST→`List<T>`，STRUCT/MAP→`Dictionary<…>`，JSON→`string` | 读取转换按此实现 |
 | BLOB 读取 | 返回指向原生结果内存的 `UnmanagedMemoryStream` | **必须在 reader 释放前拷成 `byte[]`**，否则是释放后使用 |
 | `SUM(INTEGER)` | 返回 HUGEINT，读回 `BigInteger`（不实现 `IConvertible`） | 读取转换需单独处理 `BigInteger` |
-| 事务 | `CREATE OR REPLACE` + appender 写入可整体回滚；嵌套 `BeginTransaction` 抛 *Already in a transaction* | `Refresh` 用事务保证原子性；注册不开事务（避免和用户事务冲突），失败时删表 |
+| 事务 | `CREATE OR REPLACE` + appender 写入可整体回滚；嵌套 `BeginTransaction` 抛 *Already in a transaction* | 覆盖/刷新使用暂存表 + 单条原子 CTAS 发布，避免嵌套事务；只清理本次创建的表 |
 | C# 重载解析 | 插值字符串同时匹配 `Query(FormattableString)` 与 `Query(string, object?)` 时**优先选 string 重载**，值被 `ToString()` 拼进 SQL | 插值重载加 `[OverloadResolutionPriority(1)]`，否则参数化与防注入全部失效 |
 
 ---
@@ -149,6 +149,7 @@ public sealed class DuckResult : IDisposable
 
     public Task<DuckResult> MaterializeAsync(CancellationToken ct = default);
     public List<T> To<T>();
+    public List<T> To<T>(bool cacheRows);
     public IEnumerable<T> AsEnumerable<T>();
     public DataTable ToDataTable();
     public List<Dictionary<string, object?>> ToDictionaries();
@@ -253,7 +254,7 @@ db.Query($"select o.*, c.Name from {orders} o join read_csv('cust.csv') c on o.C
 ### 4.2 建表
 
 ```sql
-CREATE OR REPLACE TEMP TABLE "orders" (
+CREATE TEMP TABLE "orders" (
   "Id" INTEGER,
   "Region" VARCHAR,
   "Amount" DECIMAL(18,4),
@@ -277,9 +278,9 @@ appender = connection.CreateAppender(table)
 
 - **每列按目标列的 DuckDB 类型生成一个写入委托**，先把值转换成该类型对应的 CLR 类型再追加。appender 不做转换，类型不一致会静默写坏数据（§0.2）。
 - LIST 列只接受元素类型与列定义一致的集合，否则报错（同样会被按原始字节写入）。
-- 源 `IEnumerable` **只枚举一次**，行直接流进 appender，不额外缓存一份（100 万行注册的托管内存增量 ≈ 0）。字典行因为要采样推导列，例外地物化一次。
+- 源 `IEnumerable` **只枚举一次**，行直接流进 appender，不额外缓存一份（100 万行注册的托管内存增量 ≈ 0）。字典行只缓存 SampleSize 行的采样前缀，剩余行沿同一个枚举器流式写入。
 - 写入异常带列名、列类型、行号与值的 CLR 类型。
-- 失败时删除这张表并移除登记，不留半张表；写到一半的 appender 在释放时会再抛错，要吞掉以保留真正的原因。
+- 失败时仅删除本次成功创建的新表或暂存表，不删除已有表或旧登记；写到一半的 appender 在释放时会再抛错，要吞掉以保留真正的原因。
 
 ### 4.4 刷新策略
 
@@ -288,12 +289,12 @@ public enum RefreshPolicy
 {
     Immutable,   // 注册即快照，永不自动检查（默认）
     Manual,      // 仅 Refresh() 重载
-    OnQuery,     // 每次 Query 前检查指纹（第一期未实现，仅保留枚举值）
+    OnQuery,     // 未实现：选择该值时抛 NotSupportedException
 }
 ```
 
 - 默认 `Immutable`。文档用一句话讲清：**`Register` 注册的是快照，不是视图**。
-- `Refresh(name)` 重新枚举注册时的源对象，在事务里 `CREATE OR REPLACE` + 写入，失败回滚、保留原数据。
+- `Refresh(name)` 重新枚举源对象到独立暂存表，成功后以单条 `CREATE OR REPLACE ... AS SELECT` 原子发布，失败保留原数据；不启动嵌套事务。
 - 直接插进 SQL 的集合（§5.1）每次查询都会重新载入，语义接近 Python 的 replacement scan。
 - 提供 `RegisterLive(IObservableCollection<T>)`（Phase 2）走增量刷新。
 
@@ -336,7 +337,11 @@ public enum RefreshPolicy
 ## 6. 结果物化
 
 - `DuckResult` 持有 `DuckDBDataReader`；`Materialize()` 后读入 `object?[]`。未物化访问 `Rows` 抛提示异常。
-- `AsEnumerable<T>()` 流式逐行读、逐行构造，不缓存。
+- `AsEnumerable<T>()` / `To<T>(cacheRows: false)` 使用缓存的类型化 reader 映射器直接构造对象，不缓存原始行；提前结束也会关闭 reader。
+- `Print` / `ToString` 仅读取预览行及一行前瞻，保留前缀供后续读取；未到末尾时显示 `at least`，不声称已知总数。
+- 预先取消物化不推进 reader；中途取消或失败会关闭 reader，拒绝后续把剩余行作为完整结果返回。
+- `ToDataTable` 用原始值类型 + AllowDBNull，BLOB 为 byte[]；ExtendedProperties 保留 DuckDB 精度以便再注册。
+- LIST 以可空元素读取，嵌套 BLOB 也在 reader 释放前复制；重复列名拒绝字典/对象映射。
 - `To<T>()` 映射器用 `System.Linq.Expressions` 生成并缓存：
   `ConcurrentDictionary<(Type T, string SchemaKey), Func<IDataRecord, T>>`。
 - `Print()` 输出对齐表格：
@@ -355,7 +360,7 @@ public enum RefreshPolicy
 第二行是 DuckDB 类型（已映射成 DDL 写法，带精度）。按 `maxWidth` 均分列宽并用 `…` 截断；`null` 显示 `NULL`；LIST / STRUCT 显示为 `[1, 2]` / `{a: 1}`；CJK 字符按 2 个宽度对齐。
 
 - 物化时 BLOB 必须当场拷成 `byte[]`（§0.2）。
-- 当前物化形态是逐行 `object?[]`，装箱开销是 `To<T>()` 的主要成本，改进方向见 §10。
+- 默认 `To<T>()` 保持逐行缓存和重复读取语义；直接映射路径避免这份缓存。未来列式缓存优化独立评估。
 
 ---
 
@@ -370,7 +375,10 @@ public enum RefreshPolicy
   ```
 
 - `TableOptions`：`Persistent`、`Overwrite`（同名时替换而不是追加 `_2`）、`RefreshPolicy`、`ColumnTypes`（列名 → DuckDB 类型）。
-- `QueryAsync`：DuckDB 内核同步；异步只把调用移到线程池，不承诺并行。
+- `QueryAsync`：DuckDB 内核同步，调用移到线程池；取消通过 command.Cancel 中断正在执行的查询，取消回调在释放会话锁前解除。
+- 结果读取/释放与会话共享锁，流式枚举不跨 yield 持锁；同一结果同时只允许一个消费者。会话释放关闭仍活动的 reader；已物化结果可独立保留。
+- 自动注册表只弱引用源对象，在后续查询、注册或访问 Tables 时回收失去源对象的表；显式注册为 Refresh 保留源，Drop/Dispose 释放引用。
+- 底层 Connection 是逃生舱：调用方负责同步，外部 SQL/事务回滚对登记信息的影响不自动跟踪。
 - 多连接：需要并发读时可共享数据库文件，但 **TEMP 表不跨连接**，共享模式必须建普通表。默认单连接串行。
 
 ---
@@ -380,7 +388,7 @@ public enum RefreshPolicy
 - 统一异常 `DuckFrameException`，`InnerException` 保留底层异常。
 - 消息包含：操作、表名、列名、列类型、行号（写入时）、实际列名列表（映射时）。
 - `DuckSession.LastSql` 供调试。
-- 注册失败不得留下半张表：失败则 `DROP TABLE IF EXISTS` 并移除登记。
+- 注册失败不得留下半张新表；只有本次 CREATE 成功后才可清理对应对象，旧表和旧登记在发布成功前保持不变。
 
 ---
 
@@ -406,24 +414,16 @@ public enum RefreshPolicy
 
 ## 10. 性能门槛
 
-绝对毫秒数随机器变化，验收以**相对 DuckDB.NET 原生 reader 的倍数**为准，绝对值仅作参考。
+以相同机器上的原生 DuckDB.NET 类型化 reader 为基线。`MaterializationBenchmarks` 实际返回 100,000 行 × 8 列，建库/注册放在 GlobalSetup，分别测量 NativeReader、CachedRows、WithoutRowCache 的时间和托管分配。`RegistrationBenchmarks` 单独测量注册。
 
-| 场景 | 验收目标 | 实测（Release，见下） | 状态 |
-|---|---|---|---|
-| 注册 10 万行 × 8 列 POCO | < 400 ms | 219 ms | ✅ |
-| 注册 100 万行 × 8 列 | < 4 s，托管内存增量 ≤ 源数据 3 倍 | 1497 ms，增量 ≈ 0 | ✅ |
-| `Query` + `To<T>()` 10 万行 × 8 列 | ≤ 1.5 × 原生 reader 类型化读取 | 311 ms，原生下限 102 ms（≈ 3×） | ❌ |
-| 其中仅映射（已物化） | — | 55 ms（优化前 137 ms） | |
-| 同一查询重复 1000 次（表已注册） | 无额外注册、无反射热点 | 约 1.9 ms / 次 | ✅ |
-| 空集合 + 显式列类型 | 返回 0 行，不抛异常 | | ✅ |
-
-> 实测环境：本机 Linux、.NET 10、DuckDB.NET.Data.Full 1.5.6.1，Stopwatch 多次取平均，**不是** BenchmarkDotNet 结果。8 列为 int / string / decimal / DateTime / bool / double / Guid / string。
-
-**`To<T>()` 的差距与改进方向**：开销集中在 `Materialize()` 把 80 万个值装箱进 `object?[]` 并长期持有（GC 压力）。改为**列式物化**——每列用类型化 getter（`GetFieldValue<T>`）读进强类型数组，映射器直接按列下标取值——预计可接近原生下限。这是 M4 剩余的主要工作。
-
-基准用 `BenchmarkDotNet`，放 `benchmarks/DuckFrame.Benchmarks`。
+- 大结果优先使用类型化直接映射 `To<T>(cacheRows: false)`，目标时间 ≤ 原生 reader 的 1.5 倍。
+- 默认 `To<T>()` 保留原始行以支持多次转换，不与单次消费路径混淆。
+- POCO 属性访问器按成员缓存；同条 SQL 内同源引用去重；字典行只缓冲采样前缀。
+- 旧实现的 Stopwatch 数字已移除，当前性能以 BenchmarkDotNet 报告为准；单次 Dry 运行只验证基准可执行，不作为稳定性能结论。
 
 ---
+
+当前短基准记录见 [2026-11-01 报告](benchmarks-2026-11-01.md)。
 
 ## 11. 测试计划
 
@@ -437,7 +437,7 @@ public enum RefreshPolicy
 - **刷新语义**：`Register` 后改源不生效；`Refresh()` 后生效；插值的集合每次查询读到最新内容且不堆积临时表；同一 `DuckResult` 插值多次只注册一次。
 - **安全**：字符串参数含 `'; DROP TABLE --` 不导致注入（同时验证选中的是插值重载）；`Sql.Ident` 对 `a"b` 正确转义。
 - **异常**：映射缺列/多列、空集合无列定义、重复表名、写入中途失败不留残表。
-- **并发**：8 线程并发 `Query` 同一 session，不崩、结果正确（待补）。
+- **并发**：8 线程并发 `Query` 同一 session，不崩、结果正确（已由 BoundaryTests 覆盖）。
 - **生命周期**：`Dispose` 后抛 `ObjectDisposedException`；`DuckResult` 未物化 Dispose 不泄漏 reader。
 
 ---
@@ -494,7 +494,7 @@ samples/DuckFrame.Sample/        §2.1 的五个示例
 | M1 | 会话 + `IList<T>` 注册 + `Query` + `Print` | §2.1 例 1 | ✅ |
 | M2 | 类型映射 + `To<T>()` 映射器 + null 矩阵 | §11 类型往返 | ✅（STRUCT/MAP 第一期走 JSON） |
 | M3 | `DataTable` / 字典行 / 结果二次查询 | §2.1 例 2–5 | ✅ |
-| M4 | 刷新 + 错误诊断 + 基准 + README + 列式物化 | §10 达标 | 进行中：剩 `To<T>()` 性能、并发测试、`TreatWarningsAsErrors` |
+| M4 | 刷新保护 + 错误诊断 + 基准 + 直接物化 | §10 相对性能 | 已补直接映射、并发和边界测试；列式缓存独立留待后续 |
 | M5 | Phase 2：原生 STRUCT/MAP、表函数 | 大集合路径可开关 | 未开始 |
 
 ---
@@ -509,3 +509,9 @@ samples/DuckFrame.Sample/        §2.1 的五个示例
 6. 不要把值原样交给 appender；先按目标列类型转换（§4.3）。
 7. 任何关于 DuckDB.NET 具体 API 的断言，先实测 / 编译验证，再写进代码与文档；新发现写进 §0.2 并配回归测试。
 8. 每个公开 API 都要有对应测试；每个测试都能在 `:memory:` 上独立跑完。
+
+## 16. 本轮边界修复
+
+- 基线提交：`45a2bbd`。新增 `BoundaryTests` 覆盖表保护、调用方事务、LIST decimal 精度、可空元素、字典采样/大小写、构造默认值、取消、预览、GC 与并发。
+- LIST 类型元数据使用已锁定版本的公开 C API；预备语句和逻辑类型均通过 provider SafeHandle 释放，不读取 provider 私有字段。升级依赖时必须重跑空 LIST、参数 LIST、decimal 精度和二次查询测试。
+- 类型化直接映射与缓存行映射共用构造/成员绑定规则；日期、NULL、BLOB、LIST 和默认值都需验证两种模式。

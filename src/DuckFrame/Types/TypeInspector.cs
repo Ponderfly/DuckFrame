@@ -53,9 +53,7 @@ internal static class TypeInspector
                     $"{elementType} 中存在重复列名 \"{name}\"，请用 [Column] 区分。");
             }
 
-            var type = tableOptions?.ColumnTypes is { } overrides && overrides.TryGetValue(name, out var explicitType)
-                ? explicitType
-                : ClrToDuckDb.GetColumnType(property.PropertyType, options, property);
+            var type = tableOptions?.FindColumnType(name) ?? ClrToDuckDb.GetColumnType(property.PropertyType, options, property);
 
             columns.Add(new ColumnDefinition(name, type, property.PropertyType));
         }

@@ -1,6 +1,8 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text.Json;
+using DuckDB.NET.Data;
 
 namespace DuckFrame;
 
@@ -9,6 +11,7 @@ internal static class Materializer
 {
     private static readonly ConcurrentDictionary<Type, Func<object?, object?>> ScalarConverters = new();
     private static readonly ConcurrentDictionary<(Type Type, string Schema), Delegate> Cache = new();
+    private static readonly ConcurrentDictionary<(Type Type, string Schema), Delegate> ReaderCache = new();
 
     private static readonly MethodInfo ConvertValueMethod =
         typeof(DuckDbToClr).GetMethod(nameof(DuckDbToClr.ConvertValue))!;
@@ -22,13 +25,34 @@ internal static class Materializer
         return (Func<object?[], T>)Cache.GetOrAdd(key, _ => Build<T>(columns, options));
     }
 
+    public static Func<DuckDBDataReader, T> GetReader<T>(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options) =>
+        (Func<DuckDBDataReader, T>)ReaderCache.GetOrAdd((typeof(T), SchemaKey(columns, options)), _ => BuildReader<T>(columns, options));
+
+    private static Func<DuckDBDataReader, T> BuildReader<T>(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options)
+    {
+        NameMatcher.EnsureUnique(columns.Select(c => c.Name));
+        if (typeof(T) != typeof(object) && typeof(T).IsAssignableFrom(typeof(Dictionary<string, object?>)))
+        {
+            var map = Get<T>(columns, options);
+            return reader => map(Enumerable.Range(0, columns.Count).Select(i => DuckResult.ReadValue(reader, i)).ToArray());
+        }
+        if (typeof(T) == typeof(object) || IsSingleValue(typeof(T)))
+        {
+            if (columns.Count != 1) throw new DuckFrameException($"目标类型 {typeof(T)} 要求结果只有一列。");
+            var reader = Expression.Parameter(typeof(DuckDBDataReader));
+            return Expression.Lambda<Func<DuckDBDataReader, T>>(ReadDirect(reader, columns, 0, typeof(T)), reader).Compile();
+        }
+        return (Func<DuckDBDataReader, T>)BuildObject<T>(columns, options, fromReader: true).Compile();
+    }
+
     private static string SchemaKey(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options) =>
-        string.Join('|', columns.Select(c => c.Name + ":" + c.DuckDbType)) +
+        JsonSerializer.Serialize(columns.Select(c => new[] { c.Name, c.DuckDbType, c.ClrType.AssemblyQualifiedName })) +
         $"#{options.MissingColumn}#{options.ExtraColumn}";
 
     private static Func<object?[], T> Build<T>(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options)
     {
         var type = typeof(T);
+        NameMatcher.EnsureUnique(columns.Select(c => c.Name));
 
         if (type == typeof(object))
         {
@@ -57,7 +81,7 @@ internal static class Materializer
             return row => (T)convert(row[0])!;
         }
 
-        return BuildObject<T>(columns, options);
+        return (Func<object?[], T>)BuildObject<T>(columns, options).Compile();
     }
 
     /// <summary>标量与集合（LIST 列）都按单列值映射。</summary>
@@ -74,7 +98,7 @@ internal static class Materializer
     private static Func<object?, object?> GetScalarConverter(Type type) =>
         ScalarConverters.GetOrAdd(type, static t => value => DuckDbToClr.ConvertValue(value, t));
 
-    private static Func<object?[], T> BuildObject<T>(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options)
+    private static LambdaExpression BuildObject<T>(IReadOnlyList<DuckColumn> columns, DuckSessionOptions options, bool fromReader = false)
     {
         var type = typeof(T);
         var used = new HashSet<int>();
@@ -82,14 +106,28 @@ internal static class Materializer
         var ctor = SelectConstructor(type);
         var parameters = ctor?.GetParameters() ?? [];
 
-        var arguments = new List<(Type Type, int Ordinal)>(parameters.Length);
+        var row = Expression.Parameter(fromReader ? typeof(DuckDBDataReader) : typeof(object?[]), "row");
+        Expression ReadMember(int ordinal, Type target) => fromReader
+            ? ReadDirect(row, columns, ordinal, target) : Read(row, columns, ordinal, target);
+        var arguments = new List<Expression>(parameters.Length);
         foreach (var parameter in parameters)
         {
             // record 的 [property: Column("x")] 标在属性上，按同名属性取列名。
-            var name = type.GetProperty(parameter.Name!)?.GetCustomAttribute<ColumnAttribute>()?.Name ?? parameter.Name!;
-            var ordinal = NameMatcher.FindOrdinal(columns, name) ?? throw Missing(name, type, columns);
-            used.Add(ordinal);
-            arguments.Add((parameter.ParameterType, ordinal));
+            var name = type.GetProperty(parameter.Name!, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase)
+                ?.GetCustomAttribute<ColumnAttribute>()?.Name ?? parameter.Name!;
+            var ordinal = NameMatcher.FindOrdinal(columns, name);
+            if (ordinal is null)
+            {
+                if (options.MissingColumn == MissingColumnBehavior.Throw)
+                    throw Missing(name, type, columns);
+                var value = parameter.HasDefaultValue ? parameter.DefaultValue : null;
+                arguments.Add(value is null or DBNull or System.Reflection.Missing
+                    ? Expression.Default(parameter.ParameterType)
+                    : Expression.Constant(DuckDbToClr.ConvertValue(value, parameter.ParameterType), parameter.ParameterType));
+                continue;
+            }
+            used.Add(ordinal.Value);
+            arguments.Add(ReadMember(ordinal.Value, parameter.ParameterType));
         }
 
         // 构造参数没覆盖到、且可公开写入（含 init）的属性。
@@ -125,18 +163,33 @@ internal static class Materializer
             }
         }
 
-        var row = Expression.Parameter(typeof(object?[]), "row");
-
         var create = ctor is null
             ? Expression.New(type)
-            : Expression.New(ctor, arguments.Select(a => Read(row, columns, a.Ordinal, a.Type)));
+            : Expression.New(ctor, arguments);
 
         Expression body = bindings.Count == 0
             ? create
             : Expression.MemberInit(create, bindings.Select(b =>
-                (MemberBinding)Expression.Bind(b.Property, Read(row, columns, b.Ordinal, b.Property.PropertyType))));
+                (MemberBinding)Expression.Bind(b.Property, ReadMember(b.Ordinal, b.Property.PropertyType))));
 
-        return Expression.Lambda<Func<object?[], T>>(body, row).Compile();
+        return Expression.Lambda(typeof(Func<,>).MakeGenericType(row.Type, typeof(T)), body, row);
+    }
+
+    private static Expression ReadDirect(ParameterExpression reader, IReadOnlyList<DuckColumn> columns, int ordinal, Type target)
+    {
+        var underlying = Nullable.GetUnderlyingType(target) ?? target;
+        if (underlying == columns[ordinal].ClrType && (underlying.IsValueType || underlying == typeof(string)))
+        {
+            var read = Expression.Call(reader, nameof(DuckDBDataReader.GetFieldValue), [target], Expression.Constant(ordinal));
+            Expression whenNull = target.IsValueType && Nullable.GetUnderlyingType(target) is null
+                ? Expression.Call(ThrowNullMethod.MakeGenericMethod(target), Expression.Constant(columns[ordinal].Name))
+                : Expression.Default(target);
+            return Expression.Condition(
+                Expression.Call(reader, nameof(DuckDBDataReader.IsDBNull), null, Expression.Constant(ordinal)), whenNull, read);
+        }
+        var value = Expression.Call(typeof(DuckResult).GetMethod(nameof(DuckResult.ReadValue), BindingFlags.NonPublic | BindingFlags.Static)!,
+            reader, Expression.Constant(ordinal));
+        return Expression.Convert(Expression.Call(ConvertValueMethod, value, Expression.Constant(target, typeof(Type))), target);
     }
 
     /// <summary>生成读取 row[ordinal] 并转换为 target 的表达式。</summary>

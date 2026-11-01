@@ -13,7 +13,8 @@ namespace DuckFrame;
 internal static class DuckDbTypes
 {
     /// <summary>把结果列转换成可用于 CREATE TABLE 的类型字符串。</summary>
-    public static string FromReader(IDataRecord reader, int ordinal, Func<DataTable?> schema, DuckSessionOptions options)
+    public static string FromReader(IDataRecord reader, int ordinal, Func<DataTable?> schema, DuckSessionOptions options,
+        Func<int, string?>? nestedType = null)
     {
         var name = reader.GetDataTypeName(ordinal);
 
@@ -31,7 +32,9 @@ internal static class DuckDbTypes
             "TimestampNs" or "TimestampMs" or "TimestampS" => "TIMESTAMP",
 
             // List<int> → INTEGER[]；元素不是标量时退化为 JSON。
-            "List" or "Array" => ClrToDuckDb.GetColumnType(reader.GetFieldType(ordinal), options),
+            "List" or "Array" => ClrToDuckDb.GetColumnType(reader.GetFieldType(ordinal), options) == "JSON"
+                ? "JSON"
+                : nestedType?.Invoke(ordinal) ?? throw new DuckFrameException("无法取得 LIST 的完整元素类型，请把查询拆成单条 SQL，避免重新注册时丢失精度。"),
 
             // appender 无法写 STRUCT / MAP，第一期统一存 JSON。
             "Struct" or "Map" or "Union" => "JSON",
@@ -78,6 +81,9 @@ internal static class DuckDbTypes
         var open = ddlType.IndexOf('(');
         var comma = ddlType.IndexOf(',', open + 1);
         var close = ddlType.IndexOf(')', comma + 1);
+
+        if (Family(ddlType) == "DECIMAL" && comma < 0)
+            return open < 0 ? 3 : 0; // DuckDB 的 DECIMAL 默认 (18,3)，DECIMAL(p) 默认 scale=0。
 
         return open >= 0 && comma > open && close > comma &&
                int.TryParse(ddlType.AsSpan(comma + 1, close - comma - 1).Trim(), out var scale)

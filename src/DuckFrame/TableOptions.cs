@@ -14,4 +14,7 @@ public sealed class TableOptions
 
     /// <summary>列名到 DuckDB 类型字符串的显式覆盖，例如 "Amount" -> "DECIMAL(38,10)"。</summary>
     public IReadOnlyDictionary<string, string>? ColumnTypes { get; init; }
+
+    internal string? FindColumnType(string name) => ColumnTypes?
+        .FirstOrDefault(pair => string.Equals(pair.Key, name, StringComparison.OrdinalIgnoreCase)).Value;
 }

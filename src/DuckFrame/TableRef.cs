@@ -14,13 +14,13 @@ public abstract class TableRef : IFormattable
     /// <summary>未加引号的表名。</summary>
     public string Name { get; }
 
-    /// <summary>已加引号的限定名，例如 temp."orders"。</summary>
+    /// <summary>包含 catalog/schema 的限定名，例如 temp.main."orders"。</summary>
     public string QualifiedName { get; }
 
     /// <summary>注册时写入的行数。</summary>
     public long RowCount { get; internal set; }
 
-    /// <summary>源对象是否可能已变化（刷新策略为 Manual / OnQuery 时由刷新逻辑维护）。</summary>
+    /// <summary>当前不自动检测源变化；Refresh 成功后为 false。</summary>
     public bool IsStale { get; internal set; }
 
     /// <summary>插值到 SQL 时返回限定名。</summary>

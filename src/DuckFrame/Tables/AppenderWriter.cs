@@ -34,10 +34,12 @@ internal static class AppenderWriter
         DuckDBConnection connection,
         string tableName,
         IReadOnlyList<ColumnDefinition> columns,
-        IEnumerable<object?[]> rows)
+        IEnumerable<object?[]> rows,
+        string? catalog = null,
+        string schema = "main")
     {
         var writers = columns.Select(CreateWriter).ToArray();
-        var appender = connection.CreateAppender(tableName);
+        var appender = catalog is null ? connection.CreateAppender(tableName) : connection.CreateAppender(catalog, schema, tableName);
         long count = 0;
 
         try
@@ -129,7 +131,7 @@ internal static class AppenderWriter
             var d = Convert.ToDecimal(v, Invariant);
 
             // appender 会把多出的小数位直接截掉，这里提前拒绝，避免静默丢精度。
-            if (scale is { } s && decimal.Round(d, s) != d)
+            if (scale is { } s && s < 28 && decimal.Round(d, s) != d)
             {
                 throw new DuckFrameException(
                     $"列 \"{column.Name}\" 定义为 {column.DuckDbType}，值 {d.ToString(Invariant)} 的小数位超出范围会被截断。" +
@@ -143,6 +145,8 @@ internal static class AppenderWriter
     private static Action<IDuckDBAppenderRow, object> CreateListWriter(ColumnDefinition column)
     {
         var declared = DuckDbTypes.Family(DuckDbTypes.ListElement(column.DuckDbType));
+        var elementColumn = column with { DuckDbType = DuckDbTypes.ListElement(column.DuckDbType) };
+        var scale = DuckDbTypes.DecimalScale(elementColumn.DuckDbType);
 
         return (r, v) =>
         {
@@ -156,8 +160,33 @@ internal static class AppenderWriter
                     $"列 \"{column.Name}\" 定义为 {column.DuckDbType}，但值是 {type.Name}，元素类型不一致，已拒绝写入。");
             }
 
+            // 输入只枚举一次；验证后把当前 LIST 交给已核对的泛型 appender 重载。
+            if (declared == "DECIMAL")
+            {
+                if (v is IEnumerable<decimal> decimals)
+                    v = ValidateDecimals(decimals, column.Name, scale).ToArray();
+                else
+                    v = ValidateNullableDecimals((IEnumerable<decimal?>)v, column.Name, scale).ToArray();
+            }
             ListAppenders.GetOrAdd(element, CompileListAppender)(r, v);
         };
+    }
+
+    private static decimal ValidateDecimal(decimal value, string column, int? scale)
+    {
+        if (scale is { } s && s < 28 && decimal.Round(value, s) != value)
+            throw new DuckFrameException($"列 \"{column}\" 的 LIST 元素 {value.ToString(Invariant)} 超出小数位 {s}；请通过 ColumnTypes 或 DecimalScale 放宽精度。");
+        return value;
+    }
+
+    private static IEnumerable<decimal> ValidateDecimals(IEnumerable<decimal> values, string column, int? scale)
+    {
+        foreach (var value in values) yield return ValidateDecimal(value, column, scale);
+    }
+
+    private static IEnumerable<decimal?> ValidateNullableDecimals(IEnumerable<decimal?> values, string column, int? scale)
+    {
+        foreach (var value in values) yield return value is { } d ? ValidateDecimal(d, column, scale) : null;
     }
 
     private static Action<IDuckDBAppenderRow, object> CompileListAppender(Type element)
