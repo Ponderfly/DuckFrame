@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+
+    <!-- 骨架阶段先不把警告当错误；M4 全绿后改为 true（见 docs/spec.md §12）。 -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+    <!-- 锁定版本：docs/spec.md §0.2 的实测结论（appender 不转换类型等）只对该版本成立，升级前需重跑 CorrectnessTests。 -->
+    <DuckDbNetVersion>1.5.6.1</DuckDbNetVersion>
+
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/DuckFrame/DuckFrame.csproj" />
+  <Project Path="tests/DuckFrame.Tests/DuckFrame.Tests.csproj" />
+  <Project Path="samples/DuckFrame.Sample/DuckFrame.Sample.csproj" />
+  <Project Path="benchmarks/DuckFrame.Benchmarks/DuckFrame.Benchmarks.csproj" />
+</Solution>
