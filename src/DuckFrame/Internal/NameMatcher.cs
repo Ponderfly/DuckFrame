@@ -14,6 +14,33 @@ internal static class NameMatcher
                 throw new DuckFrameException($"存在重复列名 \"{name}\"，请使用不同的列名或 SQL 别名。");
     }
 
+    /// <summary>
+    /// 按 DuckDB 的规则给重复列名（忽略大小写）加后缀：重复者依次尝试 name_1、name_2…，
+    /// 直到与已占用的名字都不冲突；名字保留各自原来的大小写。
+    /// </summary>
+    public static string[] Deduplicate(IReadOnlyList<string> names)
+    {
+        var result = new string[names.Count];
+        var used = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        for (var i = 0; i < names.Count; i++)
+        {
+            var name = names[i];
+            if (used.TryAdd(name, 0))
+            {
+                result[i] = name;
+                continue;
+            }
+
+            string candidate;
+            do candidate = $"{name}_{++used[name]}";
+            while (used.ContainsKey(candidate));
+
+            used.Add(candidate, 0);
+            result[i] = candidate;
+        }
+        return result;
+    }
+
     public static int? FindOrdinal(IReadOnlyList<DuckColumn> columns, string memberName)
     {
         for (var i = 0; i < columns.Count; i++)

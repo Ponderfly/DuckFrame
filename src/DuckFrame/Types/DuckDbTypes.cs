@@ -13,10 +13,25 @@ namespace DuckFrame;
 internal static class DuckDbTypes
 {
     /// <summary>把结果列转换成可用于 CREATE TABLE 的类型字符串。</summary>
+    /// <remarks>approximate：LIST 拿不到原生元素类型、只能按 CLR 类型推测时为 true。</remarks>
     public static string FromReader(IDataRecord reader, int ordinal, Func<DataTable?> schema, DuckSessionOptions options,
-        Func<int, string?>? nestedType = null)
+        Func<int, string?>? nestedType, out bool approximate)
     {
         var name = reader.GetDataTypeName(ordinal);
+        approximate = false;
+
+        if (name is "List" or "Array")
+        {
+            // List<int> → INTEGER[]；元素不是标量时退化为 JSON。
+            var clrType = ClrToDuckDb.GetColumnType(reader.GetFieldType(ordinal), options);
+            if (clrType == "JSON") return clrType;
+            if (nestedType?.Invoke(ordinal) is { } exact) return exact;
+
+            // 多语句 SQL 等场景取不到原生元素类型：先按 CLR 类型推测，读取不受影响；
+            // 推测值可能丢失 DECIMAL 精度等信息，所以再次注册时会被拒绝（见 DuckColumn.IsTypeApproximate）。
+            approximate = true;
+            return clrType;
+        }
 
         return name switch
         {
@@ -30,11 +45,6 @@ internal static class DuckDbTypes
 
             // 读回的已是 DateTime（100ns 精度），按微秒 TIMESTAMP 重建即可。
             "TimestampNs" or "TimestampMs" or "TimestampS" => "TIMESTAMP",
-
-            // List<int> → INTEGER[]；元素不是标量时退化为 JSON。
-            "List" or "Array" => ClrToDuckDb.GetColumnType(reader.GetFieldType(ordinal), options) == "JSON"
-                ? "JSON"
-                : nestedType?.Invoke(ordinal) ?? throw new DuckFrameException("无法取得 LIST 的完整元素类型，请把查询拆成单条 SQL，避免重新注册时丢失精度。"),
 
             // appender 无法写 STRUCT / MAP，第一期统一存 JSON。
             "Struct" or "Map" or "Union" => "JSON",

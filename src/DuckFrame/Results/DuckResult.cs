@@ -40,6 +40,11 @@ public sealed class DuckResult : IDisposable
 
     internal bool IsReleased => _reader is null;
 
+    internal bool IsDisposed => _disposed;
+
+    /// <summary>reader 释放或结果 Dispose 时通知会话，用于确定性地删除自动注册的临时表。在结果锁内调用。</summary>
+    internal Action<DuckResult>? LifetimeChanged { get; set; }
+
     /// <summary>已读入的行数（未物化时返回已读行数 0）。</summary>
     public long RowCount { get { lock (_gate) return _rows?.Count ?? 0; } }
 
@@ -212,7 +217,9 @@ public sealed class DuckResult : IDisposable
                 var columnType = typeof(Stream).IsAssignableFrom(type) ? typeof(byte[]) : Nullable.GetUnderlyingType(type) ?? type;
                 var dataColumn = table.Columns.Add(column.Name, columnType);
                 dataColumn.AllowDBNull = true;
-                dataColumn.ExtendedProperties["DuckFrame.DuckDbType"] = column.DuckDbType;
+                // 推测出来的类型不记录，再次注册时按 CLR 类型推导，由写入器校验精度。
+                if (!column.IsTypeApproximate)
+                    dataColumn.ExtendedProperties["DuckFrame.DuckDbType"] = column.DuckDbType;
             }
 
             foreach (var row in Rows)
@@ -331,6 +338,7 @@ public sealed class DuckResult : IDisposable
             _prefix = null;
             _rows = null;
             ReleaseReader();
+            NotifyLifetimeChanged();
         }
     }
 
@@ -347,8 +355,22 @@ public sealed class DuckResult : IDisposable
         var command = _command;
         _reader = null;
         _command = null;
-        try { reader?.Dispose(); }
-        finally { command?.Dispose(); }
+        try
+        {
+            try { reader?.Dispose(); }
+            finally { command?.Dispose(); }
+        }
+        finally
+        {
+            // reader 释放后，这次查询插值进来的临时表就不再被引用。
+            if (reader is not null) NotifyLifetimeChanged();
+        }
+    }
+
+    private void NotifyLifetimeChanged()
+    {
+        // 清理临时表失败不能影响结果本身的读取或释放。
+        try { LifetimeChanged?.Invoke(this); } catch { }
     }
 
     private void ThrowIfDisposed() => Guard.NotDisposed(_disposed, nameof(DuckResult));

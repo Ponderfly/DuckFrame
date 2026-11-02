@@ -148,7 +148,7 @@ public sealed class CorrectnessTests
     }
 
     [Fact]
-    public void Inline_collection_reuses_its_table_and_sees_changes()
+    public void Inline_collection_sees_changes_and_leaves_no_tables()
     {
         using var db = DuckSession.OpenInMemory();
         var orders = new List<Order> { new(1, "EU", 10m, DateTime.UtcNow) };
@@ -157,7 +157,7 @@ public sealed class CorrectnessTests
         orders.Add(new Order(2, "US", 20m, DateTime.UtcNow));
         Assert.Equal(2L, db.Scalar<long>($"select count(*) from {orders}"));
 
-        Assert.Single(db.Tables);
+        Assert.Empty(db.Tables);
     }
 
     [Fact]

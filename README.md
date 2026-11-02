@@ -55,15 +55,19 @@ dotnet run --project samples/DuckFrame.Sample
 
 | 写法 | 行为 |
 |---|---|
-| `db.Query($"... from {orders}")` | 每次查询都把 `orders` 重新载入同一张临时表——读到最新内容，循环查询也不会堆积表 |
+| `db.Query($"... from {orders}")` | 每次查询都把 `orders` 载入一张新的临时表 `__pN`，读到最新内容；该结果读完、`Dispose` 或被回收后立即删表，`Execute` 执行完即删——循环查询不会堆积表，也不持有源对象 |
 | `var t = db.Register(orders);` 然后 `{t}` | 注册时**拷贝一次**，之后改 `orders` 不影响 `t`；调用 `db.Refresh(t.Name)` 重新读取（先写暂存表再原子替换，失败保留原数据） |
-| `{someResult}`（`DuckResult`） | 首次插值时注册成 `__qN`，之后复用 |
+| `{someResult}`（`DuckResult`） | 首次插值时注册成 `__qN`，之后复用；`someResult.Dispose()` 时删表 |
 
 数据量大、要反复查询时用 `Register`，避免每次查询都重新拷贝。同一条 SQL 中对同一个源的多次引用只载入一次。
 
 `Overwrite=false` 会避开数据库内已有的表和视图。覆盖和刷新先写入独立暂存表，再用单条原子 DDL 发布；失败保留旧数据，也能参与调用方已有的事务。表句柄和 appender 使用完整 catalog/schema 限定，避免 TEMP 表遮蔽同名持久表。
 
-自动注册的集合和结果采用弱引用：源对象被回收后，下次查询、注册或访问 `Tables` 时清理对应临时表。显式 `Register` 保留源对象以便 `Refresh`，可通过 `Drop` 或释放会话解除引用。
+自动注册表的清理是确定性的，不依赖 GC：集合 / DataTable 的表跟随使用它的结果，查询结果的表跟随源结果的 `Dispose`。结果未释放就被回收时，下次查询、注册或访问 `Tables` 兜底清理。因此不要用插值集合建 VIEW（`create view v as select * from {list}`），视图会在表删除后失效——需要长期存在的表请用 `Register`。显式 `Register` 保留源对象以便 `Refresh`，可通过 `Drop` 或释放会话解除引用。
+
+`Overwrite=true` 把已登记的表从持久改为临时（或反过来）时，会删除本会话登记的旧表；用户自己建的同名表不会被删除。
+
+结果中有同名列（如 `select a.*, b.*`）时，默认按 DuckDB 的规则重命名（忽略大小写）：`Id, Id` → `Id, Id_1`，`a, a, a_1` → `a, a_1, a_1_1`，与 DuckDB 用该结果建表得到的列名一致，所以 `ToDictionaries()`、`ToDataTable()`、再次插值都能直接使用。映射到 POCO 时，多出的 `Id_1` 按 `ExtraColumn` 规则处理，不会顶替 `Id`；可以用 `[Column("Id_1")]` 显式映射。设置 `DuplicateColumns = DuplicateColumnBehavior.Throw` 则保留原名，需要唯一列名的操作会报错。多语句 SQL 返回的 LIST 列拿不到原生元素类型（`DuckColumn.IsTypeApproximate`），可以正常读取，但不能再插进 SQL 当表使用。
 
 ## 结果读取与取消
 
@@ -78,7 +82,7 @@ var rows = result.To<Order>(cacheRows: false);    // 类型化 reader 直接构�
 - 会话、结果读取和释放共享同一把锁；同一个结果的并行消费者会得到明确异常。直接使用 `Connection` 的代码需自行同步，外部 SQL/事务回滚对表登记信息的影响不自动跟踪。
 - `QueryAsync` 在线程池执行，并可中断正在运行的 DuckDB 查询。等待会话锁和加载插值数据期间，在执行查询前检查取消，不抢占用户的数据源枚举。
 - `MaterializeAsync` 仍是同步读取接口。预先取消不会移动 reader；中途取消或读取失败会关闭 reader，之后必须重新查询。
-- `ToDataTable()` 保留数值类型、NULL、BLOB 和 decimal 精度；字典列名忽略大小写，重复列名明确报错。采样之外出现的新字典列需用 `ColumnTypes` 声明或增加 `SampleSize`。
+- `ToDataTable()` 保留数值类型、NULL、BLOB 和 decimal 精度；字典行的列名忽略大小写，同一行内重复列名明确报错；查询结果的同名列默认自动重命名。采样之外出现的新字典列需用 `ColumnTypes` 声明或增加 `SampleSize`。
 
 ## 已核对的 DuckDB.NET 行为
 

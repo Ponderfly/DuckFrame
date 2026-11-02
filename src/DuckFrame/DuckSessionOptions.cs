@@ -33,6 +33,19 @@ public enum ExtraColumnBehavior
     Ignore,
 }
 
+/// <summary>查询结果出现同名列（忽略大小写）时的行为。</summary>
+public enum DuplicateColumnBehavior
+{
+    /// <summary>
+    /// 按 DuckDB 自身规则重命名（默认）：后出现的同名列依次加 _1、_2…，仍冲突时继续追加，
+    /// 例如 <c>a, a, a_1</c> → <c>a, a_1, a_1_1</c>。与 DuckDB 用该结果建表时得到的列名一致。
+    /// </summary>
+    Rename,
+
+    /// <summary>保留原列名；To&lt;T&gt;、ToDictionaries、ToDataTable、再次插值等需要唯一列名的操作会报错。</summary>
+    Throw,
+}
+
 /// <summary>会话级配置。</summary>
 public sealed class DuckSessionOptions
 {
@@ -62,6 +75,9 @@ public sealed class DuckSessionOptions
 
     /// <summary>结果包含多余列时的行为。</summary>
     public ExtraColumnBehavior ExtraColumn { get; init; } = ExtraColumnBehavior.Throw;
+
+    /// <summary>结果出现同名列时的行为，默认按 DuckDB 规则重命名。</summary>
+    public DuplicateColumnBehavior DuplicateColumns { get; init; } = DuplicateColumnBehavior.Rename;
 
     /// <summary>执行 SQL 前的日志回调，默认关闭。</summary>
     public Action<string>? LogSql { get; init; }

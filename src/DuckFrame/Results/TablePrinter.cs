@@ -52,7 +52,8 @@ internal static class TablePrinter
         null or DBNull => "NULL",
         string s => s,
         byte[] bytes => $"<blob {bytes.Length} bytes>",
-        decimal d => d.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture),
+        // decimal 按自身小数位输出，避免预览把 1.234567 显示成 1.2346 而误判精度。
+        decimal d => d.ToString(System.Globalization.CultureInfo.InvariantCulture),
         double d => d.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture),
         float f => f.ToString("0.####", System.Globalization.CultureInfo.InvariantCulture),
         DateTime dt => dt.ToString("yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),

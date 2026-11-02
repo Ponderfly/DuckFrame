@@ -264,7 +264,7 @@ CREATE TEMP TABLE "orders" (
 
 - 默认 `TEMP`（会话私有）；`TableOptions.Persistent = true` 时建普通表。
 - 表名、列名**永远加双引号**，内部 `"` 转义为 `""`。不做省略引号的优化。
-- 同名列冲突（`A` vs `a`）→ 抛异常，要求 `[Column]` 区分。
+- 同名列冲突（`A` vs `a`）：查询结果默认按 DuckDB 规则重命名（`DuplicateColumnBehavior.Rename`，`a, A` → `a, A_1`，仍冲突时继续追加后缀，与 CTAS 一致）；选 `Throw` 时保留原名，映射 / 字典 / DataTable / 再次插值报错。字典行与 POCO 自身的重名仍然报错，要求 `[Column]` 区分。
 
 ### 4.3 写入
 
@@ -309,8 +309,8 @@ public enum RefreshPolicy
 | 插值参数类型 | 处理 | 输出示例 |
 |---|---|---|
 | `TableRef` | 加引号的表名（TEMP 表无需 `temp.` 前缀） | `"orders"` |
-| `DuckResult` | 自动注册为 `__q1`；同一个结果多次插值只注册一次 | `"__q1"` |
-| 对象集合（`IEnumerable<POCO>`、字典行）/ `DataTable` | 自动注册为 `__p1`；**同一个对象再次插值时沿用同一张表并重新载入**，既读到最新内容，又不会在循环里堆积临时表 | `"__p1"` |
+| `DuckResult` | 自动注册为 `__q1`；同一个结果多次插值只注册一次，源结果 Dispose 时删除；含推测类型（`IsTypeApproximate`）的列时拒绝 | `"__q1"` |
+| 对象集合（`IEnumerable<POCO>`、字典行）/ `DataTable` | 每条语句注册一张新表 `__pN`（同一语句内同一对象只载入一次），读到最新内容；结果的 reader 释放（读完 / Dispose / 回收）或 `Execute` 结束后立即删除，不持有源对象 | `"__p1"` |
 | 标量集合（`int[]`、`List<string>`…） | **LIST 参数**，不注册成表 | `$p0`，可写 `= ANY({ids})`、`IN (SELECT unnest({ids}))` |
 | `string` / `char` / `byte[]` | **不**当标识符，参数绑定 | `$p0` |
 | 数值 / `bool` / 日期时间 / `Guid` / 枚举 / `null` | 参数绑定 | `$p0` |
@@ -341,7 +341,7 @@ public enum RefreshPolicy
 - `Print` / `ToString` 仅读取预览行及一行前瞻，保留前缀供后续读取；未到末尾时显示 `at least`，不声称已知总数。
 - 预先取消物化不推进 reader；中途取消或失败会关闭 reader，拒绝后续把剩余行作为完整结果返回。
 - `ToDataTable` 用原始值类型 + AllowDBNull，BLOB 为 byte[]；ExtendedProperties 保留 DuckDB 精度以便再注册。
-- LIST 以可空元素读取，嵌套 BLOB 也在 reader 释放前复制；重复列名拒绝字典/对象映射。
+- LIST 以可空元素读取，嵌套 BLOB 也在 reader 释放前复制；结果的重复列名默认按 DuckDB 规则重命名（可配置为报错）。
 - `To<T>()` 映射器用 `System.Linq.Expressions` 生成并缓存：
   `ConcurrentDictionary<(Type T, string SchemaKey), Func<IDataRecord, T>>`。
 - `Print()` 输出对齐表格：
@@ -377,7 +377,8 @@ public enum RefreshPolicy
 - `TableOptions`：`Persistent`、`Overwrite`（同名时替换而不是追加 `_2`）、`RefreshPolicy`、`ColumnTypes`（列名 → DuckDB 类型）。
 - `QueryAsync`：DuckDB 内核同步，调用移到线程池；取消通过 command.Cancel 中断正在执行的查询，取消回调在释放会话锁前解除。
 - 结果读取/释放与会话共享锁，流式枚举不跨 yield 持锁；同一结果同时只允许一个消费者。会话释放关闭仍活动的 reader；已物化结果可独立保留。
-- 自动注册表只弱引用源对象，在后续查询、注册或访问 Tables 时回收失去源对象的表；显式注册为 Refresh 保留源，Drop/Dispose 释放引用。
+- 自动注册表的生命周期是确定性的：集合表跟随使用它的结果（reader 释放即删），结果表跟随源结果的 Dispose；结果被回收时在后续查询、注册或访问 Tables 时兜底清理。显式注册为 Refresh 保留源，Drop/Dispose 释放引用。
+- 覆盖导致表位置改变（持久 ↔ 临时）时删除本会话登记的旧表，不动用户自建的表。
 - 底层 Connection 是逃生舱：调用方负责同步，外部 SQL/事务回滚对登记信息的影响不自动跟踪。
 - 多连接：需要并发读时可共享数据库文件，但 **TEMP 表不跨连接**，共享模式必须建普通表。默认单连接串行。
 
@@ -434,7 +435,7 @@ public enum RefreshPolicy
 - **数据源形态**：`List<T>`、`T[]`、惰性 `IEnumerable<T>`（验证只枚举一次）、`DataTable`（含 `DBNull`、`byte[]` 列）、`IEnumerable<Dictionary<string,T>>`（经 `Register` 和插值两条路）、`DuckResult` 二次查询（精度不丢）。
 - **appender 行为（§0.2）**：混合数值列不被写坏；`EnumsAsInt` / `TimeSpanAsMicros` 往返；decimal 小数位溢出报错且不留表；BLOB 在 reader 释放后仍可读。
 - **映射**：无参构造 + 可写属性的 class；record + 额外 `init` 属性；`SUM(INTEGER)` 的 HUGEINT 读成 `long`。
-- **刷新语义**：`Register` 后改源不生效；`Refresh()` 后生效；插值的集合每次查询读到最新内容且不堆积临时表；同一 `DuckResult` 插值多次只注册一次。
+- **刷新语义**：`Register` 后改源不生效；`Refresh()` 后生效；插值的集合每次查询读到最新内容，未触发 GC 时循环查询也不堆积临时表；同一 `DuckResult` 插值多次只注册一次。
 - **安全**：字符串参数含 `'; DROP TABLE --` 不导致注入（同时验证选中的是插值重载）；`Sql.Ident` 对 `a"b` 正确转义。
 - **异常**：映射缺列/多列、空集合无列定义、重复表名、写入中途失败不留残表。
 - **并发**：8 线程并发 `Query` 同一 session，不崩、结果正确（已由 BoundaryTests 覆盖）。

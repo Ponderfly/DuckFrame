@@ -21,8 +21,8 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
     private readonly Lock _gate = new();
     private readonly Dictionary<string, TableRegistration> _tables = new(StringComparer.OrdinalIgnoreCase);
 
-    // 直接插进 SQL 的集合 / DataTable / DuckResult → 它们对应的表，按引用识别同一个对象。
-    private readonly ConditionalWeakTable<object, TableRef> _inlineTables = new();
+    // 插进 SQL 的 DuckResult → 它对应的表；结果不可变，同一个结果反复插值时复用。
+    private readonly ConditionalWeakTable<DuckResult, TableRef> _resultTables = new();
     private readonly List<WeakReference<DuckResult>> _results = [];
 
     private int _autoTableIndex;
@@ -52,6 +52,8 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         ValidatePolicy(options.RefreshPolicy);
         if (options.SampleSize <= 0)
             throw new ArgumentOutOfRangeException(nameof(options.SampleSize));
+        if (!Enum.IsDefined(options.DuplicateColumns))
+            throw new ArgumentOutOfRangeException(nameof(options.DuplicateColumns));
         _ = ClrToDuckDb.GetColumnType(typeof(decimal), options);
         var builder = new System.Data.Common.DbConnectionStringBuilder { ["Data Source"] = dataSource };
         var connection = new DuckDBConnection(builder.ConnectionString);
@@ -77,7 +79,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             lock (_gate)
             {
                 ThrowIfDisposed();
-                CollectInlineTables();
+                CollectAutoTables();
                 return _tables.Values
                     .Select(t => new TableInfo(
                         t.Name,
@@ -158,15 +160,8 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             if (!_tables.TryGetValue(name, out var registration))
                 throw new DuckFrameException($"表 \"{name}\" 未注册。");
 
-            if (registration.InlineSource is { } weak && weak.TryGetTarget(out var source) && source is not DuckResult)
-            {
-                var refreshed = RegisterInline(source);
-                registration.Handle.RowCount = refreshed.RowCount;
-                registration.Handle.IsStale = false;
-                return;
-            }
             if (registration.Reload is null)
-                throw new DuckFrameException($"表 \"{name}\" 来自查询结果，没有可重新读取的源对象。");
+                throw new DuckFrameException($"表 \"{name}\" 是插值时自动注册的临时表，没有可重新读取的源对象；需要刷新请改用 Register()。");
 
             var count = WriteTable(registration.QualifiedName, registration.Name, registration.Columns,
                 registration.Reload(), registration.Persistent, replace: true);
@@ -275,8 +270,9 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         NameMatcher.EnsureUnique(columns.Select(c => c.Name));
         var persistent = options?.Persistent ?? false;
         var qualified = persistent ? PersistentName(name) : $"temp.main.{NameResolver.Quote(name)}";
+        _tables.TryGetValue(name, out var previous);
         var count = WriteTable(qualified, name, columns, rows, persistent,
-            replace: options?.Overwrite == true || _tables.ContainsKey(name));
+            replace: options?.Overwrite == true || previous is not null);
 
         var handle = TableRef.Create(elementType, name, qualified);
         handle.RowCount = count;
@@ -286,6 +282,18 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             Policy = options?.RefreshPolicy ?? _options.RefreshPolicy, Reload = reload,
             Persistent = persistent, RowCount = count,
         };
+
+        // 同名覆盖时如果持久 / 临时位置变了，旧表不会被 CREATE OR REPLACE 覆盖到，需要单独删除。
+        // 只删本会话登记过的表，用户自己建的同名表不动。
+        if (previous is not null && !string.Equals(previous.QualifiedName, qualified, StringComparison.Ordinal))
+        {
+            try { DropTable(previous.QualifiedName); }
+            catch (Exception ex)
+            {
+                throw new DuckFrameException(
+                    $"新表 {qualified} 已发布，但删除原来的 {previous.QualifiedName} 失败，请手动删除。", ex);
+            }
+        }
         return handle;
     }
 
@@ -373,7 +381,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
 
         ValidatePolicy(options?.RefreshPolicy ?? _options.RefreshPolicy);
         if (options?.ColumnTypes is { } overrides) NameMatcher.EnsureUnique(overrides.Keys);
-        CollectInlineTables();
+        CollectAutoTables();
         return options?.Overwrite == true ? candidate : NameResolver.MakeUnique(candidate, DatabaseNames());
     }
 
@@ -394,12 +402,45 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         if (!Enum.IsDefined(policy)) throw new ArgumentOutOfRangeException(nameof(policy));
     }
 
-    private void CollectInlineTables()
+    /// <summary>
+    /// 删除生命周期已结束的自动注册表。正常情况下由结果的通知即时触发（见 <see cref="OnResultLifetimeChanged"/>）；
+    /// 这里在每次查询 / 注册时兜底处理结果未 Dispose 就被回收、或之前删除失败的表。
+    /// </summary>
+    private void CollectAutoTables(DuckResult? owner = null)
     {
-        foreach (var entry in _tables.Values.Where(t => t.InlineSource is { } source && !source.TryGetTarget(out _)).ToArray())
+        foreach (var entry in _tables.Values.Where(t => IsExpired(t, owner)).ToArray())
         {
-            DropTable(entry.QualifiedName);
+            // 删除失败（例如调用方事务已中止）时保留登记，下次再试；不能影响当前操作。
+            try { DropTable(entry.QualifiedName); }
+            catch { continue; }
             _tables.Remove(entry.Name);
+        }
+    }
+
+    private static bool IsExpired(TableRegistration table, DuckResult? only)
+    {
+        if (table.Lifetime == AutoTableLifetime.None || table.Owner is null) return false;
+        if (!table.Owner.TryGetTarget(out var owner)) return true;
+        if (only is not null && !ReferenceEquals(owner, only)) return false;
+        return table.Lifetime == AutoTableLifetime.Query ? owner.IsReleased : owner.IsDisposed;
+    }
+
+    private void OnResultLifetimeChanged(DuckResult result)
+    {
+        lock (_gate)
+        {
+            // 会话释放时连接随之关闭，临时表自然消失。
+            if (!_disposed) CollectAutoTables(result);
+        }
+    }
+
+    private void DropOwnedTables(ParameterState state)
+    {
+        foreach (var table in state.Owned)
+        {
+            try { DropTable(table.QualifiedName); }
+            catch { continue; }
+            _tables.Remove(table.Name);
         }
     }
 
@@ -424,9 +465,8 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         lock (_gate)
         {
             ThrowIfDisposed();
-            CollectInlineTables();
-            var formatted = Format(sql);
-            return ExecuteCore(formatted.Sql, formatted.Parameters);
+            CollectAutoTables();
+            return QueryCore(sql, CancellationToken.None);
         }
     }
 
@@ -437,7 +477,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         lock (_gate)
         {
             ThrowIfDisposed();
-            CollectInlineTables();
+            CollectAutoTables();
             return ExecuteCore(sql, BindParameters(parameters));
         }
     }
@@ -452,10 +492,8 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             {
                 ct.ThrowIfCancellationRequested();
                 ThrowIfDisposed();
-                CollectInlineTables();
-                var formatted = Format(sql);
-                ct.ThrowIfCancellationRequested();
-                return ExecuteCore(formatted.Sql, formatted.Parameters, ct);
+                CollectAutoTables();
+                return QueryCore(sql, ct);
             }
         }, ct);
     }
@@ -467,15 +505,25 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         lock (_gate)
         {
             ThrowIfDisposed();
-            var formatted = Format(sql);
+            CollectAutoTables();
+            var state = new ParameterState();
+            try
+            {
+                var formatted = Format(sql, state);
 
-            using var command = _connection.CreateCommand();
-            command.CommandText = formatted.Sql;
-            foreach (var parameter in formatted.Parameters)
-                command.Parameters.Add(parameter);
+                using var command = _connection.CreateCommand();
+                command.CommandText = formatted.Sql;
+                foreach (var parameter in formatted.Parameters)
+                    command.Parameters.Add(parameter);
 
-            Log(formatted.Sql);
-            return command.ExecuteNonQuery();
+                Log(formatted.Sql);
+                return command.ExecuteNonQuery();
+            }
+            finally
+            {
+                // 语句执行完就不再需要插值进来的集合表。
+                DropOwnedTables(state);
+            }
         }
     }
 
@@ -487,10 +535,28 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
         return value is null ? default : (T?)DuckDbToClr.ConvertValue(value, typeof(T));
     }
 
-    private SqlFormatter.Formatted Format(FormattableString sql)
+    private SqlFormatter.Formatted Format(FormattableString sql, ParameterState state) =>
+        SqlFormatter.Format(sql, (argument, parameters) => RenderArgument(argument, parameters, state));
+
+    private DuckResult QueryCore(FormattableString sql, CancellationToken ct)
     {
         var state = new ParameterState();
-        return SqlFormatter.Format(sql, (argument, parameters) => RenderArgument(argument, parameters, state));
+        try
+        {
+            var formatted = Format(sql, state);
+            ct.ThrowIfCancellationRequested();
+            var result = ExecuteCore(formatted.Sql, formatted.Parameters, ct);
+
+            // 插值进来的集合表归这个结果所有：结果读完、释放或被回收后删除。
+            var owner = new WeakReference<DuckResult>(result);
+            foreach (var table in state.Owned) table.Owner = owner;
+            return result;
+        }
+        catch
+        {
+            DropOwnedTables(state);
+            throw;
+        }
     }
 
     private DuckResult ExecuteCore(string sql, IReadOnlyList<DuckDBParameter> parameters, CancellationToken ct = default)
@@ -523,18 +589,22 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             }
 
             var columns = new List<DuckColumn>(reader.FieldCount);
+            var names = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToArray();
+            if (_options.DuplicateColumns == DuplicateColumnBehavior.Rename)
+                names = NameMatcher.Deduplicate(names);
             string?[]? nestedTypes = null;
             string? NestedType(int ordinal) =>
                 (nestedTypes ??= NativeResultSchema.Read(_connection, sql, parameters, reader.FieldCount))[ordinal];
             for (var i = 0; i < reader.FieldCount; i++)
             {
-                columns.Add(new DuckColumn(
-                    reader.GetName(i),
-                    DuckDbTypes.FromReader(reader, i, Schema, _options, NestedType),
-                    ResultValueReader.StoredType(reader.GetFieldType(i))));
+                var type = DuckDbTypes.FromReader(reader, i, Schema, _options, NestedType, out var approximate);
+                columns.Add(new DuckColumn(names[i], type, ResultValueReader.StoredType(reader.GetFieldType(i)))
+                {
+                    IsTypeApproximate = approximate,
+                });
             }
 
-            var result = new DuckResult(reader, command, columns, _options, _gate);
+            var result = new DuckResult(reader, command, columns, _options, _gate) { LifetimeChanged = OnResultLifetimeChanged };
             _results.RemoveAll(r => !r.TryGetTarget(out var previous) || previous.IsReleased);
             _results.Add(new WeakReference<DuckResult>(result));
             return result;
@@ -554,6 +624,9 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
     {
         public int Index;
         public readonly Dictionary<object, TableRef> Tables = new(ReferenceEqualityComparer.Instance);
+
+        /// <summary>本次插值新建、生命周期跟随这条语句的表。</summary>
+        public readonly List<TableRegistration> Owned = [];
     }
 
     /// <summary>把插值参数渲染为 SQL 片段（docs/spec.md §5.1）。</summary>
@@ -574,7 +647,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
                 return InlineOnce(result, state, () => RegisterResult(result)).QualifiedName;
 
             case DataTable dataTable:
-                return InlineOnce(dataTable, state, () => RegisterInline(dataTable)).QualifiedName;
+                return InlineOnce(dataTable, state, () => RegisterInline(dataTable, state)).QualifiedName;
 
             // 字符串永远是值，不会被当成标识符或表。
             case string or char or byte[]:
@@ -586,7 +659,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
 
             // 对象集合是一张表。
             case IEnumerable enumerable:
-                return InlineOnce(enumerable, state, () => RegisterInline(enumerable)).QualifiedName;
+                return InlineOnce(enumerable, state, () => RegisterInline(enumerable, state)).QualifiedName;
 
             default:
                 return AddParameter(argument, parameters, state);
@@ -631,15 +704,12 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
     }
 
     /// <summary>
-    /// 注册直接插进 SQL 的集合 / DataTable。同一个对象反复插值时沿用同一张表并重新载入：
-    /// 和 Python 的 replacement scan 一样每次读到最新内容，又不会在循环查询里堆积临时表。
+    /// 注册直接插进 SQL 的集合 / DataTable。和 Python 的 replacement scan 一样，每条语句都读到源的最新内容；
+    /// 表只在这条语句（及其结果的 reader）存续期间存在，循环查询不会堆积临时表，也不持有源对象。
     /// </summary>
-    private TableRef RegisterInline(object source)
+    private TableRef RegisterInline(object source, ParameterState state)
     {
-        var name = _inlineTables.TryGetValue(source, out var previous) &&
-                   _tables.TryGetValue(previous.Name, out var entry) && ReferenceEquals(entry.Handle, previous)
-            ? previous.Name
-            : NameResolver.MakeUnique($"__p{Interlocked.Increment(ref _autoTableIndex)}", DatabaseNames());
+        var name = NameResolver.MakeUnique($"__p{Interlocked.Increment(ref _autoTableIndex)}", DatabaseNames());
 
         var handle = source switch
         {
@@ -648,9 +718,10 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             _ => throw new DuckFrameException($"{source.GetType()} 不能作为表插入 SQL。"),
         };
 
-        _inlineTables.AddOrUpdate(source, handle);
-        _tables[name].Reload = null;
-        _tables[name].InlineSource = new WeakReference<object>(source);
+        var registration = _tables[name];
+        registration.Reload = null;
+        registration.Lifetime = AutoTableLifetime.Query;
+        state.Owned.Add(registration);
         return handle;
     }
 
@@ -670,9 +741,16 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
     /// <summary>注册查询结果。结果集不可变，同一个结果多次插值时直接复用已注册的表。</summary>
     private TableRef RegisterResult(DuckResult result)
     {
-        if (_inlineTables.TryGetValue(result, out var existing) &&
+        if (_resultTables.TryGetValue(result, out var existing) &&
             _tables.TryGetValue(existing.Name, out var registration) && ReferenceEquals(registration.Handle, existing))
             return existing;
+
+        if (result.Columns.FirstOrDefault(c => c.IsTypeApproximate) is { } approximate)
+        {
+            throw new DuckFrameException(
+                $"结果列 \"{approximate.Name}\" 的 LIST 元素类型无法确定（多语句 SQL 取不到原生元数据），" +
+                "按推测类型重建表可能丢失精度。请把产生该结果的查询拆成单条 SQL。");
+        }
 
         var name = NameResolver.MakeUnique($"__q{Interlocked.Increment(ref _autoQueryIndex)}", DatabaseNames());
         var columns = result.Columns
@@ -680,8 +758,9 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             .ToArray();
 
         var handle = CreateTableHandle(name, typeof(DuckResult), columns, result.Materialize().Rows, reload: null, options: null);
-        _inlineTables.AddOrUpdate(result, handle);
-        _tables[name].InlineSource = new WeakReference<object>(result);
+        _resultTables.AddOrUpdate(result, handle);
+        _tables[name].Lifetime = AutoTableLifetime.Result;
+        _tables[name].Owner = new WeakReference<DuckResult>(result);
         return handle;
     }
 
@@ -724,7 +803,7 @@ public sealed class DuckSession : IDisposable, IAsyncDisposable
             }
             _results.Clear();
             _tables.Clear();
-            _inlineTables.Clear();
+            _resultTables.Clear();
             try { _connection.Dispose(); }
             catch (Exception ex) { failure ??= ex; }
             if (failure is not null) System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(failure).Throw();
